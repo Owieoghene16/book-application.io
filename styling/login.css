@@ -1,0 +1,140 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #F5F6FA;
+    text-align: center;
+}
+
+h1 {
+    font-size: 30px;
+    color: black;
+    margin-top: 50px;
+    margin-bottom: 40px;
+    margin-right: 16px;
+}
+
+p {
+    color: black;
+    margin-bottom: 20px;
+    margin-right: 135px;
+}
+
+
+.email {
+    color: black;
+    margin-right: 360px;
+}
+
+.password {
+    color: black;
+    margin-right: 330px;
+}
+.checkbox {
+  color: black;
+  margin-right: 21.2%;
+}
+
+input[type=password] {
+    width: 30%;
+    padding: 12px 20px;
+    display: inline-block;
+    border-radius: 4px;
+    border: 1px solid black;
+    box-sizing: border-box;
+}
+input[type=password]:hover {
+    border: 0.5px solid yellow;
+}
+
+input[type=text] {
+    width: 30%;
+    padding: 12px 20px;
+    border: 1px solid black;
+    box-sizing: border-box;
+    outline: none;
+}
+
+input[type=submit] {
+    width: 30%;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    font-size: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: 0.1rem solid black;
+    margin-bottom: 1rem;
+    background-color: whitesmoke;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+  
+input[type=submit]:hover {
+    cursor: pointer;
+    box-shadow: aliceblue;
+    transform: translateY(2px);
+    transition: transform 150ms
+}
+
+.create {
+    color: gray;
+    text-decoration: none;
+}
+
+.flex {
+    display: flex;
+    margin-right: 10%;
+    margin-top: 2%;
+}
+.icon{
+    color: black;
+    margin-left: 25%;
+  }
+
+  nav{
+    display: flex;
+    height: 40px;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-right: 15vh;
+  }
+  
+  nav ul{
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+  }
+  nav ul li a{
+    color: black;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 8px 15px;
+    border-radius: 5px;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+  }
+  nav ul li a.active,
+  nav ul li a:hover{
+    color: gray;
+    transform: translateY(-1px);
+    transition: transform 150ms;
+  }
+.logo-details{
+    display: flex;
+    margin-left: 8%;
+    margin-top: 0.5%;
+}
+nav .menu-btn i{
+    color: #fff;
+    font-size: 22px;
+    cursor: pointer;
+    display: none;
+}
+.log2 {
+  color: grey;
+    text-decoration: none;
+}

@@ -1,0 +1,155 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #F5F6FA;
+    text-align: center;
+    text-decoration: none;
+  }
+  
+  h1 {
+    font-size: 30px;
+    color: black;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    margin-right: 32px;
+  }
+  
+  p {
+    color: black;
+    margin-right: 17.5%;
+  }
+  .icon {
+    margin-top: 50px;
+    color: red;
+    text-align: right;
+  }
+  
+  .email {
+    color: black;
+    margin-right: 26.9%;
+  }
+  
+  .username {
+    color: black;
+    margin-right: 24.3%;
+  
+  }
+  
+  .password {
+    color: black;
+    margin-right: 24%;
+  }
+  
+  
+  
+  input[type=password] {
+    width: 30%;
+    padding: 12px 20px;
+    display: inline-block;
+    border-style: none;
+    border-radius: 4px;
+    box-sizing: border-box;
+    outline: none;
+    border: 0.1px solid black;
+  }
+  input[type=text] {
+    width: 30%;
+    padding: 12px 20px;
+    display: inline-block;
+    outline: none;
+    border: 0.1px solid black;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  .create {
+    width: 30%;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: 0.1rem solid black;
+    color: black;
+    margin-bottom: 1rem;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .create{
+    cursor: pointer;
+    box-shadow: aliceblue;
+    background-color: #f1eaea;
+    transform: translateY(2px);
+    transition: transform 150ms
+  }
+  .re-enter {
+    color: black;
+    margin-right: 19.7%;
+  }
+  .contain {
+    text-align: left;
+    margin-bottom: 8px;
+  }
+  .checkbox {
+    color: black;
+    margin-right: 21.2%;
+  }
+  .flex {
+    display: flex;
+    margin-bottom: 30px;
+    margin-top: 20px;
+    margin-right: 20px;
+  }
+  .log{
+    color: black;
+    margin-left: 10%;
+  }
+  
+  .space {
+    margin-right: 15vh;
+  }
+  nav{
+    display: flex;
+    height: 40px;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-right: 5vh;
+  }
+  
+  nav ul{
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+  }
+  nav ul li a{
+    color: black;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 8px 15px;
+    border-radius: 5px;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+  }
+  nav ul li a.active,
+  nav ul li a:hover{
+    color: gray;
+    transform: translateY(-1px);
+    transition: transform 150ms;
+  }
+  .logo-details{
+    display: flex;
+    margin-left: 8%;
+  }
+  nav .menu-btn i{
+    color: #fff;
+    font-size: 22px;
+    cursor: pointer;
+    display: none;
+  }
+  .log2 {
+    color: grey;
+    text-decoration: none;
+  }

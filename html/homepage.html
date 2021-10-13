@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='../styling/homepage.css' rel='stylesheet'>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <title>Document</title>
+</head>
+<body>
+    <div class="sidebar">
+      <div class="logo-details">
+        <i class='fa fa-book'></i>
+        <span class="logo_name">Bookstack</span>
+      </div>
+      <ul class="nav-links">
+        <li>
+          <a href="./homepage.html" class="active">
+            <i class='fa fa-home'></i>
+            <span class="links_name">Home</span>
+          </a>
+        </li>
+        <li>
+          <a href="./profile.html">
+            <i class='fa fa-user'></i>
+            <span class="links_name">Profile</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class='bx bx-video'></i>
+            <span class="links_name">Videos</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class='bx bx-task' ></i>
+            <span class="links_name">Projects</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class='bx bx-message'></i>
+            <span class="links_name">Messages</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class='fa fa-comment' ></i>
+            <span class="links_name">Friends</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class='bx bx-heart' ></i>
+            <span class="links_name">Favrorites</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class='bx bx-cog' ></i>
+            <span class="links_name">Setting</span>
+          </a>
+        </li>
+        <li class="log_out">
+          <a href="#">
+            <i class='bx bx-log-out'></i>
+            <span class="links_name">Log out</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <section class="home-section">
+      <nav>
+        <div class="sidebar-button">
+          <i class='bx bx-menu sidebarBtn'></i>
+          <span class="dashboard">Home</span>
+        </div>
+        <div class="search-box">
+          <input type="text" placeholder="Search...">
+          <i class='bx bx-search'></i>
+        </div>
+        <div class="profile-details">
+          <img src="../images/homee.jpg" alt="">
+          <span class="admin_name">User Name</span>
+          <i class='bx bx-chevron-down' ></i>
+        </div>
+      </nav>
+
+      
+  
+    <div class="home-content">
+      <div class="slideshow-container">
+        <div class="border">
+
+        </div>
+      <div class="second-header">
+        <h style="margin-top: 6%;">Welcome Home, Owieoghene!</h>
+          <div class="number">
+            <a class="project1" href="./story.html">New Project</a>
+          </div>
+      </div>
+      <div class="border">
+      </div>
+      <div class="picks">
+        <h>Top Picks For You</h>
+      </div>
+      <div class="picks-images">
+        <div class="pick-img">
+          <img  id="myImg" class="pick-img" src="https://demos.creative-tim.com/argon-dashboard/assets/img/theme/team-4.jpg" width="90%" height="90%">
+          <div style="display: flex; margin-left: 40%;">
+            <i class="fa fa-money"></i>
+            <p>nice</p>
+          </div>
+        </div>
+        <div class="pick-img">
+          <img id="myImg2"  class="pick-img" src="https://demos.creative-tim.com/argon-dashboard/assets/img/theme/team-3.jpg" width="90%" height="90%">
+          <div style="display: flex; margin-left: 40%;">
+            <i class="fa fa-money"></i>
+            <p>nice</p>
+          </div>
+        </div>
+        <div class="pick-img">
+          <img id="myImg3" class="pick-img"  src="https://demos.creative-tim.com/argon-dashboard/assets/img/theme/team-2.jpg" width="90%" height="90%">
+          <div style="display: flex; margin-left: 40%;">
+            <i class="fa fa-money"></i>
+            <p>nice</p>
+          </div>
+        </div>
+        <div class="pick-img">
+          <img id="myImg4" class="pick-img"  src="https://demos.creative-tim.com/argon-dashboard/assets/img/theme/team-1.jpg" width="90%" height="90%">
+          <div style="display: flex; margin-left: 40%;">
+            <i class="fa fa-money"></i>
+            <p>nice</p>
+          </div>
+        </div>
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+          <div style="display: flex;" class="modal-design">
+            <div>
+                <img class="modal-content" id="img01">
+                <div class="descript">
+                  <div style="display: flex; margin-bottom:1.9%;">
+                    <div style="text-align: center; margin-right: 50%; margin-left: 30%;">
+                      <h1 class="modal-h">Title</h1> 
+                    </div>         
+                    <div >
+                      <span class="close" id="close">x</span>
+                    </div>
+                  </div>
+                  <p style="font-family:italic; color: black;">
+                    The name of the movie is called a funny and annoying attitude
+                    Mankind is evolving. Some love it, some fear it. Some embrace it,
+                    some envy it. For Zoey, the evolution of man has always been in the 
+                    darkest part of her closet. A place no one touches.
+                      Only her family knew of her secret, and her stepfather 
+                      never let the fact that Zoey was different disappear. 
+                      But with mankind evolving, Zoey will soon figure out her
+                       own evolution is about to change more than s<br></br></p>
+                  <div class="book-des">
+                    <a class="book-design" href="#">Borrow Book</a>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="border">
+    </div>
+    <div class="adult-picks">
+      <p1>Adults Picks</p1>
+    </div>
+    <div class="picks-images">
+      <div class="pick-img">
+        <img  id="myImg" src="https://i.ibb.co/nL9J6dj/download-5.jpg" width="220px" height="58%">
+        <div style="display: flex; margin-left: 40%;">
+          <i class="fa fa-money"></i>
+          <p>nice</p>
+        </div>
+      </div>
+      <div class="pick-img">
+        <img id="myImg"  class="pick-img" src="https://i.ibb.co/M25692k/adult-image2.jpg" width="220px" height="58%">
+        <div style="display: flex; margin-left: 40%;">
+          <i class="fa fa-money"></i>
+          <p>nice</p>
+        </div>
+      </div>
+      <div class="pick-img">
+        <img id="myImg" class="pick-img"  src="https://i.ibb.co/YfPMTTy/adult-image.jpg" width="220px" height="58%">
+        <div style="display: flex; margin-left: 40%;">
+          <i class="fa fa-money"></i>
+          <p>nice</p>
+        </div>
+      </div>
+      <div class="pick-img">
+        <img id="myImg" class="pick-img"  src="https://i.ibb.co/gjQmqrM/adult-image3.jpg" width="220px" height="58%">
+        <div style="display: flex; margin-left: 40%;">
+          <i class="fa fa-money"></i>
+          <p>nice</p>
+        </div>
+      </div>
+    </div>
+    <div class="border1">
+    </div>
+    <div style="margin-left: 5.5%; margin-top: 6.5%;">
+      <h style="font-size: 23px; font-weight: 400;">Trending</h>
+    </div>
+    <div style="display: flex; margin-left: 5.5%; margin-bottom: 3%; margin-top: 6%;">
+      <div>
+        <img src="https://i.ibb.co/Nt1H31G/download-6.jpg" width="110%">
+      </div>
+      <div style="margin-left: 5%; margin-top: 6%;">
+         <h class="beauty">Beauty In Nature</h>
+         <div class="display: flex;">
+          <i class="fa fa-money"></i>
+            <i class="bx bx-menu"></i>
+            <p>
+              This is my story<br></br>
+              description __ description.<br></br>
+              </p>
+          </div>
+      </div>
+    </div>
+    <div class="border">
+    </div>
+    <div style="margin-left: 5.5%; margin-bottom: 5%; margin-top: 5%;">
+      <h style="font-size: 23px; font-weight: 400;">Borrowed History</h>
+    </div>
+    <div class="picks-images">
+      <div class="pick-img">
+        <img  id="return-book" class="pick-img" src="https://demos.creative-tim.com/argon-dashboard/assets/img/theme/team-4.jpg" width="90%" height="90%">
+        <div style="display: flex; margin-left: 40%;">
+          <i class="fa fa-money"></i>
+          <p>nice</p>
+        </div>
+      </div>
+      <div class="pick-img">
+        <img id="return-book2"  class="pick-img" src="https://demos.creative-tim.com/argon-dashboard/assets/img/theme/team-3.jpg" width="90%" height="90%">
+        <div style="display: flex; margin-left: 40%;">
+          <i class="fa fa-money"></i>
+          <p>nice</p>
+        </div>
+      </div>
+      <div class="pick-img">
+        <img  id="return-book3" class="pick-img"  src="https://demos.creative-tim.com/argon-dashboard/assets/img/theme/team-2.jpg" width="90%" height="90%">
+        <div style="display: flex; margin-left: 40%;">
+          <i class="fa fa-money"></i>
+          <p>nice</p>
+        </div>
+      </div>
+      <div class="pick-img">
+        <img  id="return-book4" class="pick-img"  src="https://demos.creative-tim.com/argon-dashboard/assets/img/theme/team-1.jpg" width="90%" height="90%">
+        <div style="display: flex; margin-left: 40%;">
+          <i class="fa fa-money"></i>
+          <p>nice</p>
+        </div>
+      </div>
+      <!-- The Modal -->
+        <div id="myModal2" class="modal">
+          <div style="display: flex;" class="modal-design">
+            <div>
+                <img class="modal-content" id="img02">
+              <div class="descript">
+                <div style="display: flex; margin-bottom:1.9%;">
+                  <div style="text-align: center; margin-right: 50%; margin-left: 30%;">
+                    <h1 class="modal-h">Title</h1> 
+                  </div>         
+                  <div >
+                    <span class="close" id="close2">x</span>
+                  </div>
+                </div>
+                <p style="font-family:italic; color: black;">
+                  The name of the movie is called a funny and annoying attitude
+                  Mankind is evolving. Some love it, some fear it. Some embrace it,
+                  some envy it. For Zoey, the evolution of man has always been in the 
+                  darkest part of her closet. A place no one touches.
+                    Only her family knew of her secret, and her stepfather 
+                    never let the fact that Zoey was different disappear. 
+                    But with mankind evolving, Zoey will soon figure out her
+                     own evolution is about to change more than s<br></br></p>
+                <div class="book-des">
+                  <a class="book-design" href="#">Return Book</a>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+     </div>
+     <div class="border">
+     </div>
+     <div style="margin-left: 5.5%; margin-bottom: 5%; margin-top: 5%;">
+       <h style="font-size: 23px; font-weight: 400;">Returned History</h>
+     </div>
+     <div class="picks-images">
+       <div class="pick-img">
+         <img  id="return-book9" class="pick-img" src="https://demos.creative-tim.com/argon-dashboard/assets/img/theme/team-2.jpg" width="90%" height="90%">
+         <div style="display: flex; margin-left: 40%;">
+           <i class="fa fa-money"></i>
+           <p>nice</p>
+         </div>
+       </div>
+       <div class="pick-img">
+         <img id="return-book10"  class="pick-img" src="https://demos.creative-tim.com/argon-dashboard/assets/img/theme/team-3.jpg" width="90%" height="90%">
+         <div style="display: flex; margin-left: 40%;">
+           <i class="fa fa-money"></i>
+           <p>nice</p>
+         </div>
+       </div>
+       <div class="pick-img">
+         <img  id="return-book11" class="pick-img"  src="https://demos.creative-tim.com/argon-dashboard/assets/img/theme/team-1.jpg" width="90%" height="90%">
+         <div style="display: flex; margin-left: 40%;">
+           <i class="fa fa-money"></i>
+           <p>nice</p>
+         </div>
+       </div>
+       <div class="pick-img">
+         <img  id="return-book12" class="pick-img"  src="https://demos.creative-tim.com/argon-dashboard/assets/img/theme/team-4.jpg" width="90%" height="90%">
+         <div style="display: flex; margin-left: 40%;">
+           <i class="fa fa-money"></i>
+           <p>nice</p>
+         </div>
+       </div>
+       <!-- The Modal -->
+         <div id="myModal3" class="modal">
+           <div style="display: flex;" class="modal-design">
+             <div>
+                 <img class="modal-content" id="img03">
+               <div class="descript">
+                 <div style="display: flex; margin-bottom:1.9%;">
+                   <div style="text-align: center; margin-right: 50%; margin-left: 30%;">
+                     <h1 class="modal-h">Title</h1> 
+                   </div>         
+                   <div >
+                     <span class="close" id="close2">x</span>
+                   </div>
+                 </div>
+                 <p style="font-family:italic; color: black;">
+                   The name of the movie is called a funny and annoying attitude
+                   Mankind is evolving. Some love it, some fear it. Some embrace it,
+                   some envy it. For Zoey, the evolution of man has always been in the 
+                   darkest part of her closet. A place no one touches.
+                     Only her family knew of her secret, and her stepfather 
+                     never let the fact that Zoey was different disappear. 
+                     But with mankind evolving, Zoey will soon figure out her
+                      own evolution is about to change more than s<br></br></p>
+                 <div class="book-des">
+                   <a class="book-design" href="#">Borrow Book</a>
+                 </div>
+             </div>
+           </div>
+         </div>
+       </div>
+      </div>
+    </section>
+    <script>
+      let sidebar = document.querySelector(".sidebar");
+      let sidebarBtn = document.querySelector(".sidebarBtn");
+      sidebarBtn.onclick = function() {
+        sidebar.classList.toggle("active");
+      if(sidebar.classList.contains("active")){
+       sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right");
+       }else
+       sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+       }
+
+    
+    var modal = document.getElementById("myModal");
+    var modal2 = document.getElementById("myModal2");
+    var modal3 = document.getElementById("myModal3");
+
+   // Get the image and insert it inside the modal - use its "alt" text as a caption
+    var img = document.getElementById("myImg");
+    var img2 = document.getElementById("myImg2");
+    var img3 = document.getElementById("myImg3");
+    var img4 = document.getElementById("myImg4");
+    var img5 = document.getElementById("return-book");
+    var img6 = document.getElementById("return-book2");
+    var img7 = document.getElementById("return-book3");
+    var img8 = document.getElementById("return-book4");
+    var img9 = document.getElementById("return-book9");
+    var img10 = document.getElementById("return-book10");
+    var img11 = document.getElementById("return-book11");
+    var img12 = document.getElementById("return-book12");
+    var modalImg = document.getElementById("img01");
+    var modalImg2 = document.getElementById("img02");
+    var modalImg3 = document.getElementById("img03");
+    var captionText = document.getElementById("caption");
+    img.onclick = function(){
+    modal.style.display = "block";
+    modalImg.src = this.src;
+    captionText.innerHTML = this.alt;
+    }
+    img2.onclick = function(){
+    modal.style.display = "block";
+    modalImg.src = this.src;
+    captionText.innerHTML = this.alt;
+    }
+    img2.onclick = function(){
+    modal.style.display = "block";
+    modalImg.src = this.src;
+    captionText.innerHTML = this.alt;
+    }
+    img3.onclick = function(){
+    modal.style.display = "block";
+    modalImg.src = this.src;
+    captionText.innerHTML = this.alt;
+    }
+    img4.onclick = function(){
+    modal.style.display = "block";
+    modalImg.src = this.src;
+    captionText.innerHTML = this.alt;
+    }
+    img4.onclick = function(){
+    modal.style.display = "block";
+    modalImg.src = this.src;
+    captionText.innerHTML = this.alt;
+    }
+    img5.onclick = function(){
+    modal2.style.display = "block";
+    modalImg2.src = this.src;
+    captionText.innerHTML = this.alt;
+    }
+    img6.onclick = function(){
+    modal2.style.display = "block";
+    modalImg2.src = this.src;
+    captionText.innerHTML = this.alt;
+    }
+    img7.onclick = function(){
+    modal2.style.display = "block";
+    modalImg2.src = this.src;
+    captionText.innerHTML = this.alt;
+    }
+    img8.onclick = function(){
+    modal2.style.display = "block";
+    modalImg2.src = this.src;
+    captionText.innerHTML = this.alt;
+    }
+    img8.onclick = function(){
+    modal2.style.display = "block";
+    modalImg2.src = this.src;
+    captionText.innerHTML = this.alt;
+    }
+    img9.onclick = function(){
+    modal3.style.display = "block";
+    modalImg3.src = this.src;
+    captionText.innerHTML = this.alt;
+    }
+    img10.onclick = function(){
+    modal3.style.display = "block";
+    modalImg3.src = this.src;
+    captionText.innerHTML = this.alt;
+    }
+    img11.onclick = function(){
+    modal3.style.display = "block";
+    modalImg3.src = this.src;
+    captionText.innerHTML = this.alt;
+    }
+    img12.onclick = function(){
+    modal3.style.display = "block";
+    modalImg3.src = this.src;
+    captionText.innerHTML = this.alt;
+    }
+
+// Get the <span> element that closes the modal
+var span = document.getElementById("close");
+var span2 = document.getElementById("close2");
+var span3 = document.getElementById("close3");
+// When the user clicks on <span> (x), close the modal
+  span.onclick = function() { 
+  return window.location.assign("./homepage.html")
+}
+span2.onclick = function() { 
+  return window.location.assign("./homepage.html")
+}
+span3.onclick = function() { 
+  return window.location.assign("./homepage.html")
+}
+
+    </script>
+</body>
+</html>

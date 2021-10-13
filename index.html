@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <link href='./styling/registration.css' rel='stylesheet'>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+  <div>
+      <nav class="flex">
+        <div class="logo-details">
+          <a href="#">
+              <i class='fa fa-book fa-4x log'></i>
+            </a>
+        </div>
+          <ul class="flex">
+              <li>
+                  <a href="#">
+                    <i class='fa fa-home links_name' ></i>
+                    <span class="links_name">Home</span>
+                  </a>
+              </li>
+              <li>
+                  <a href="#">
+                    <i class='fa fa-dashboard' ></i>
+                    <span class="links_name">Dashboard</span>
+                  </a>
+              </li>
+              <li>
+                  <a href="./index.html">
+                    <i class='bx bx-user' ></i>
+                    <span class="links_name">Register</span>
+                  </a>
+              </li>
+              <li>
+                  <a href="./html/homepage.html" class="space">
+                    <i class='fa fa-key' ></i>
+                    <span class="links_name">Login</span>
+                  </a>
+              </li>
+          </ul>
+        </nav>  
+        </div>
+        <div>
+            <h1>Create Bookstack Account</h1>
+        </div>
+        <div>
+            <p style="color: grey;">Register with your email</p>
+        </div>
+        <div>
+            <form action = "./html/homepage.html">
+                <label class="username" for="email">Username:</label><br>
+                <input type="text" id="username" name="email"><br><br>
+                <label class="email" for="email">Email:</label><br>
+                <input type="text" id="email" name="email"><br><br>
+                <label class="password" for="password">Password:</label><br>
+                <input type="password" id="password" name="password"><br><br>
+                <label class="re-enter" for="password">Re-enter Password:</label><br>
+                <input type="password" id="re-enterpassword" name="password"><br><br>
+                <div class="checkbox">
+                    <input type="checkbox" name="remember">Remember me
+                </div>
+                <input type="submit" value="Create Account" class="create" id="create_account">
+            </form>
+        </div>
+        <div>
+            <p2>Already Registered?</p2>
+            <a class = "log2" href="./html/login.html">Log In</a>
+        </div>
+
+    </div>
+  <script src="../javascript/user.js"></script>
+</body>
+</html>
