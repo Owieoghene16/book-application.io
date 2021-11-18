@@ -3,13 +3,15 @@ import db from '../database/database';
 
 const Tutorial = db.tutorials;
 
-export function create(req, res) {
+export const create = (req, res) => {
   const tutorial = {
     username: req.body.username,
     email: req.body.email,
     password: req.body.password,
   };
-  // Save Tutorial in the database
+
+  const { username, email, password } = tutorial;
+
   Tutorial.create(tutorial)
     .then((data) => {
       res.send(data);
@@ -17,9 +19,9 @@ export function create(req, res) {
     .catch(() => {
       res.status(500).send('Some error occurred while creating the Tutorial.');
     });
-}
+};
 
-export function findOne(req, res) {
+export const findOne = (req, res) => {
   const { id } = req.params;
 
   Tutorial.findByPk(id)
@@ -37,9 +39,9 @@ export function findOne(req, res) {
         message: `Error retrieving Tutorial with id=${id}`,
       });
     });
-}
+};
 
-export function findAll(req, res) {
+export const findAll = (req, res) => {
   Tutorial.findAll({})
     .then((data) => {
       res.send(data);
@@ -47,27 +49,27 @@ export function findAll(req, res) {
     .catch(() => {
       res.status(500).send('Some error occurred while retrieving tutorials.');
     });
-}
+};
 
-export function deleteOne(req, res) {
+export const deleteOne = (req, res) => {
   const { id } = req.params;
   Tutorial.destroy({
     where: { id },
   })
-    .then((num) => {
-      if (num == 1) {
+    .then(() => {
+      if (!id) {
         res.send({
-          message: 'Tutorial was deleted successfully!',
+          message: `Cannot delete Tutorial of id ${id}, Maybe Tutorial was not found!`,
         });
       } else {
         res.send({
-          message: `Cannot delete Tutorial with id=${id}. Maybe Tutorial was not found!`,
+          message: `Tutorial of id ${id}  was deleted succesfully from the database `,
         });
       }
     })
     .catch(() => {
       res.status(500).send({
-        message: `Could not delete Tutorial with id=${id}`,
+        message: `Could not delete Tutorial with id = ${id}`,
       });
     });
-}
+};
