@@ -1,9 +1,8 @@
-/* eslint-disable eqeqeq */
 import db from '../database/database';
 
 const Tutorial = db.tutorials;
 
-export const create = (req, res) => {
+export const createUser = (req, res) => {
   const tutorial = {
     username: req.body.username,
     email: req.body.email,
@@ -21,7 +20,7 @@ export const create = (req, res) => {
     });
 };
 
-export const findOne = (req, res) => {
+export const getUser = (req, res) => {
   const { id } = req.params;
 
   Tutorial.findByPk(id)
@@ -41,7 +40,7 @@ export const findOne = (req, res) => {
     });
 };
 
-export const findAll = (req, res) => {
+export const getAllUser = (req, res) => {
   Tutorial.findAll({})
     .then((data) => {
       res.send(data);
@@ -51,7 +50,7 @@ export const findAll = (req, res) => {
     });
 };
 
-export const deleteOne = (req, res) => {
+export const deleteUser = (req, res) => {
   const { id } = req.params;
   Tutorial.destroy({
     where: { id },

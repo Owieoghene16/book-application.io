@@ -1,23 +1,23 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import {
-  create, findAll, findOne, deleteOne,
+  createUser, getAllUser, getUser, deleteUser,
 } from '../controller/controller';
 
 dotenv.config();
 
 const router = express.Router();
 
-router.post('/', create);
+router.post('/', createUser);
 
 router.get('/env', (req, res) => {
   res.send(process.env.HOST);
 });
 
-router.get('/', findAll);
+router.get('/', getAllUser);
 
-router.get('/:id', findOne);
+router.get('/:id', getUser);
 
-router.delete('/:id', deleteOne);
+router.delete('/:id', deleteUser);
 
 export default router;
