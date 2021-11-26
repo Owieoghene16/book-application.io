@@ -2,7 +2,7 @@ import db from '../database/database';
 
 const Tutorial = db.tutorials;
 
-export const createUser = (req, res) => {
+export const createUser = async (req, res) => {
   const tutorial = {
     username: req.body.username,
     email: req.body.email,
@@ -10,65 +10,45 @@ export const createUser = (req, res) => {
   };
 
   const { username, email, password } = tutorial;
-
-  Tutorial.create(tutorial)
-    .then((data) => {
-      res.send(data);
-    })
-    .catch(() => {
-      res.status(500).send('Some error occurred while creating the Tutorial.');
+  const tutor = await Tutorial.create(tutorial);
+  try {
+    res.status(500).json({
+      data: tutor,
+      message: 'Tutorial created successfully',
     });
+  } catch (err) {
+    res.status(500).send(err);
+  }
 };
 
-export const getUser = (req, res) => {
+export const getUser = async (req, res) => {
   const { id } = req.params;
 
-  Tutorial.findByPk(id)
-    .then((data) => {
-      if (data) {
-        res.send(data);
-      } else {
-        res.status(404).send(
-          `Cannot find Tutorial with id=${id}.`,
-        );
-      }
-    })
-    .catch(() => {
-      res.status(500).send({
-        message: `Error retrieving Tutorial with id=${id}`,
-      });
-    });
+  const tutor = await Tutorial.findByPk(id);
+  try {
+    res.status(500).json({ data: tutor });
+  } catch (err) {
+    res.status(500).send(err);
+  }
 };
 
-export const getAllUser = (req, res) => {
-  Tutorial.findAll({})
-    .then((data) => {
-      res.send(data);
-    })
-    .catch(() => {
-      res.status(500).send('Some error occurred while retrieving tutorials.');
-    });
+export const getAllUser = async (req, res) => {
+  const tutor = await Tutorial.findAll({});
+  try {
+    res.status(500).json({ data: tutor });
+  } catch (err) {
+    res.status(500).send(err);
+  }
 };
 
-export const deleteUser = (req, res) => {
+export const deleteUser = async (req, res) => {
   const { id } = req.params;
   Tutorial.destroy({
     where: { id },
-  })
-    .then(() => {
-      if (!id) {
-        res.send({
-          message: `Cannot delete Tutorial of id ${id}, Maybe Tutorial was not found!`,
-        });
-      } else {
-        res.send({
-          message: `Tutorial of id ${id}  was deleted succesfully from the database `,
-        });
-      }
-    })
-    .catch(() => {
-      res.status(500).send({
-        message: `Could not delete Tutorial with id = ${id}`,
-      });
-    });
+  });
+  try {
+    res.status(500).json({ message: `Tutorial of id ${id}  was deleted succesfully from the database` });
+  } catch (err) {
+    res.status(500).send(err);
+  }
 };
