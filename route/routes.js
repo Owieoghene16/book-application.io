@@ -1,23 +1,13 @@
 import express from 'express';
-import dotenv from 'dotenv';
+import { verifyToken } from '../middleware/auth';
 import {
-  createUser, getAllUser, getUser, deleteUser,
-} from '../controller/controller';
-
-dotenv.config();
+  createUser, loginUser,
+} from '../controller/user';
 
 const router = express.Router();
 
-router.post('/', createUser);
+router.post('/register', verifyToken, createUser);
 
-router.get('/env', (req, res) => {
-  res.send(process.env.HOST);
-});
-
-router.get('/', getAllUser);
-
-router.get('/:id', getUser);
-
-router.delete('/:id', deleteUser);
+router.post('/login', verifyToken, loginUser);
 
 export default router;

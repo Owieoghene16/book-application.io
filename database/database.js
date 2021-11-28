@@ -1,6 +1,6 @@
 import Sequelize from 'sequelize';
 import dotenv from 'dotenv';
-import schema from './schema';
+import schema from './user';
 
 dotenv.config();
 
@@ -22,6 +22,6 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-db.tutorials = schema(sequelize, Sequelize);
+db.user = schema(sequelize, Sequelize);
 
 export default db;

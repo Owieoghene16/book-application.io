@@ -1,5 +1,5 @@
 export default (sequelize, Sequelize) => {
-  const Tutorial = sequelize.define('bookstack', {
+  const Users = sequelize.define('users', {
     username: {
       type: Sequelize.STRING,
     },
@@ -10,5 +10,5 @@ export default (sequelize, Sequelize) => {
       type: Sequelize.STRING,
     },
   });
-  return Tutorial;
+  return Users;
 };
