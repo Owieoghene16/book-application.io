@@ -1,7 +1,4 @@
 import jwt from 'jsonwebtoken';
-import dotenv from 'dotenv';
-
-dotenv.config();
 
 // eslint-disable-next-line import/prefer-default-export
 export const verifyToken = async (req, res, next) => {
