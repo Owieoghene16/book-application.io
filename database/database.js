@@ -1,12 +1,13 @@
 import Sequelize from 'sequelize';
 import dotenv from 'dotenv';
-import schema from './user';
+import Users from '../models/user';
+import Books from '../models/book';
 
 dotenv.config();
 
 const sequelize = new Sequelize(process.env.DB, process.env.USER, process.env.PASSWORD, {
   host: process.env.HOST,
-  dialect: process.env.dialect,
+  dialect: 'postgres',
   operatorsAliases: false,
 
   pool: {
@@ -22,6 +23,7 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-db.user = schema(sequelize, Sequelize);
+db.user = Users(sequelize, Sequelize);
+db.book = Books(sequelize, Sequelize);
 
 export default db;
