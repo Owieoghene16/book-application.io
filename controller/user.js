@@ -27,7 +27,7 @@ export const createUser = async (req, res) => {
         token,
       });
     } else {
-      return res.statsus(500).json({ message: 'Email already registered' });
+      return res.status(500).json({ message: 'Email already registered' });
     }
   } catch (err) {
     return res.status(401).json({ message: err });

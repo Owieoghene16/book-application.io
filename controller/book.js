@@ -64,8 +64,18 @@ export const modifyBook = async (req, res) => {
 
 export const getUserBooks = async (req, res) => {
   try {
-    const Books = await userBook.findAll({ where: { userId: req.user.id } });
-    return res.status(200).json({ Books });
+    const books = await userBook.findAll({ where: { userId: req.user.id } });
+    return res.status(200).json({ books });
+  } catch (err) {
+    return res.status(500).json({ message: err });
+  }
+};
+
+export const deleteBook = async (req, res) => {
+  try {
+    const { id } = req.params;
+    await userBook.destroy({ where: { id } });
+    return res.status(200).json({ message: 'Book is deleted' });
   } catch (err) {
     return res.status(500).json({ message: err });
   }
