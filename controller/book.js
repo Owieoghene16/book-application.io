@@ -33,12 +33,12 @@ export const createBook = async (req, res) => {
         association: Book.User,
       }],
     });
-    res.status(200).json({
+    return res.status(200).json({
       message: 'Uploaded succesfully',
       book,
     });
   } catch (err) {
-    res.status(400).json({ message: err });
+    return res.status(400).json({ message: err });
   }
 };
 
@@ -56,17 +56,17 @@ export const modifyBook = async (req, res) => {
       author,
       price,
     }, { where: { id } });
-    res.status(200).json({ updatedData });
+    return res.status(200).json({ updatedData });
   } catch (err) {
-    res.status(500).json({ message: err });
+    return res.status(500).json({ message: err });
   }
 };
 
 export const getUserBooks = async (req, res) => {
   try {
     const Books = await userBook.findAll({ where: { userId: req.user.id } });
-    res.status(200).json({ Books });
+    return res.status(200).json({ Books });
   } catch (err) {
-    res.status(500).json({ message: err });
+    return res.status(500).json({ message: err });
   }
 };

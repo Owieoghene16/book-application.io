@@ -22,15 +22,15 @@ export const createUser = async (req, res) => {
       const token = await jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
         expiresIn: '24h',
       });
-      res.status(200).json({
+      return res.status(200).json({
         message: 'User created successfully',
         token,
       });
     } else {
-      res.statsus(500).json({ message: 'Email already registered' });
+      return res.statsus(500).json({ message: 'Email already registered' });
     }
   } catch (err) {
-    res.status(401).json({ message: err });
+    return res.status(401).json({ message: err });
   }
 };
 
@@ -43,17 +43,17 @@ export const loginUser = async (req, res) => {
         expiresIn: '24h',
       });
       if (checkPassword) {
-        res.status(200).json({
+        return res.status(200).json({
           token,
           message: 'Login successful',
         });
       } else {
-        res.status(400).json({ error: 'Invalid Password' });
+        return res.status(400).json({ error: 'Invalid Password' });
       }
     } else {
-      res.status(401).json({ error: 'User does not exist' });
+      return res.status(400).json({ error: 'User does not exist'});
     }
   } catch (err) {
-    res.status(401).json({ message: err });
+    return res.status(401).json({ message: err });
   }
 };
