@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Books', {
+    await queryInterface.createTable('borrows', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -23,6 +23,13 @@ module.exports = {
       bookUrl: {
         type: Sequelize.STRING,
       },
+      isActive: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
+      },
+      creatorId: {
+        type: Sequelize.STRING,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
@@ -31,7 +38,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE,
       },
-      creatorId: {
+      borrowerId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         reference: {
@@ -43,6 +50,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Books');
-  },
+    await queryInterface.dropTable('borrows');
+  }
 };

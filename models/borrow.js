@@ -1,9 +1,8 @@
 import Sequelize from 'sequelize';
 import User from './user';
 
-// eslint-disable-next-line no-shadow
-const Books = (sequelize, DataTypes) => {
-  class Book extends Sequelize.Model {
+const Borrow = (sequelize, DataTypes) => {
+  class borrow extends Sequelize.Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -13,18 +12,20 @@ const Books = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  Book.init({
+  borrow.init({
     title: DataTypes.STRING,
     author: DataTypes.STRING,
     price: DataTypes.STRING,
     imageUrl: DataTypes.STRING,
     bookUrl: DataTypes.STRING,
+    isActive: DataTypes.BOOLEAN,
+    creatorId: DataTypes.STRING,
   }, {
     sequelize,
-    modelName: 'Book',
+    modelName: 'borrow',
   });
-  Book.User = Book.belongsTo(User(sequelize, DataTypes), { foreignKey: 'creatorId' });
-  return Book;
+  borrow.User = borrow.belongsTo(User(sequelize, DataTypes), { foreignKey: 'borrowerId' });
+  return borrow;
 };
 
-export default Books;
+export default Borrow;

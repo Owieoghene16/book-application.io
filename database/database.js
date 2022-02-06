@@ -2,11 +2,12 @@ import Sequelize from 'sequelize';
 import dotenv from 'dotenv';
 import Users from '../models/user';
 import Books from '../models/book';
+import Borrow from '../models/borrow';
 
 dotenv.config();
 
-const sequelize = new Sequelize(process.env.DB, process.env.USER, process.env.PASSWORD, {
-  host: process.env.HOST,
+const sequelize = new Sequelize(process.env.database, process.env.user, process.env.password, {
+  host: process.env.host,
   dialect: 'postgres',
   operatorsAliases: false,
 
@@ -25,5 +26,6 @@ db.sequelize = sequelize;
 
 db.user = Users(sequelize, Sequelize);
 db.book = Books(sequelize, Sequelize);
+db.borrow = Borrow(sequelize, Sequelize);
 
 export default db;
