@@ -8,27 +8,9 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      title: {
-        type: Sequelize.STRING,
-      },
-      author: {
-        type: Sequelize.STRING,
-      },
-      price: {
-        type: Sequelize.STRING,
-      },
-      imageUrl: {
-        type: Sequelize.STRING,
-      },
-      bookUrl: {
-        type: Sequelize.STRING,
-      },
       isActive: {
         type: Sequelize.BOOLEAN,
         defaultValue: false,
-      },
-      creatorId: {
-        type: Sequelize.STRING,
       },
       createdAt: {
         allowNull: false,
@@ -43,6 +25,15 @@ module.exports = {
         allowNull: false,
         reference: {
           model: 'Users',
+          schema: 'public',
+        },
+        key: 'id',
+      },
+      bookId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        reference: {
+          model: 'Books',
           schema: 'public',
         },
         key: 'id',

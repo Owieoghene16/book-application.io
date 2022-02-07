@@ -1,5 +1,6 @@
 import Sequelize from 'sequelize';
 import User from './user';
+import Book from './book';
 
 const Borrow = (sequelize, DataTypes) => {
   class borrow extends Sequelize.Model {
@@ -13,18 +14,13 @@ const Borrow = (sequelize, DataTypes) => {
     }
   }
   borrow.init({
-    title: DataTypes.STRING,
-    author: DataTypes.STRING,
-    price: DataTypes.STRING,
-    imageUrl: DataTypes.STRING,
-    bookUrl: DataTypes.STRING,
     isActive: DataTypes.BOOLEAN,
-    creatorId: DataTypes.STRING,
   }, {
     sequelize,
     modelName: 'borrow',
   });
-  borrow.User = borrow.belongsTo(User(sequelize, DataTypes), { foreignKey: 'borrowerId' });
+  borrow.belongsTo(User(sequelize, DataTypes), { through: 'Borrow', foreignKey: 'borrowerId' });
+  borrow.belongsTo(Book(sequelize, DataTypes), { through: 'Borrow', foreignKey: 'bookId' });
   return borrow;
 };
 

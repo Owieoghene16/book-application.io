@@ -3,27 +3,28 @@ import multer from 'multer';
 import { borrowBook, returnBooks, notReturnedBooks } from '../controller/borrow';
 import { createUser, loginUser } from '../controller/user';
 import { createBook, getUserBooks, modifyBook, deleteBook } from '../controller/book';
-import { verifyUser, verifyBook } from '../middleware/jwt';
+import { verifyToken } from '../middleware/jwt';
+import { validateEmailAndPassword, loginEmailAndPassword } from '../middleware/user';
 
 const upload = multer({ dest: 'uploads/files' });
 const router = express.Router();
 
-router.post('/signup', createUser);
+router.post('/signup', validateEmailAndPassword, createUser);
 
-router.post('/signin', loginUser);
+router.post('/signin', loginEmailAndPassword, loginUser);
 
-router.post('/book', verifyUser, upload.array('imageUrl', 2), createBook);
+router.post('/book', verifyToken, upload.array('imageUrl', 2), createBook);
 
-router.post('/book/:id', verifyUser, modifyBook);
+router.post('/book/:id', verifyToken, modifyBook);
 
-router.post('/user/book', verifyUser, getUserBooks);
+router.post('/user/book', verifyToken, getUserBooks);
 
-router.post('/user/:id/book', verifyBook, borrowBook);
+router.post('/book/:id/borrow', verifyToken, borrowBook);
 
-router.put('/user/:id/book', verifyBook, returnBooks);
+router.put('/book/:id/borrow', verifyToken, returnBooks);
 
-router.get('/user/:id/book?', verifyBook, notReturnedBooks);
+router.get('/book/:id/borrow?', verifyToken, notReturnedBooks);
 
-router.delete('/book/:id', verifyUser, deleteBook);
+router.delete('/book/:id', verifyToken, deleteBook);
 
 export default router;

@@ -1,6 +1,5 @@
 /* eslint-disable import/prefer-default-export */
 import Cloudinary from 'cloudinary';
-import jwt from 'jsonwebtoken';
 import Book from '../models/book';
 import db from '../database/database';
 
@@ -57,12 +56,7 @@ export const modifyBook = async (req, res) => {
       author,
       price,
     }, { where: { id } });
-    const token = await jwt.sign({
-      id,
-    }, process.env.JWT_SECRET, {
-      expiresIn: '30d',
-    });
-    return res.status(200).json({ updatedData, token });
+    return res.status(200).json({ updatedData });
   } catch (err) {
     return res.status(500).json({ message: err });
   }
