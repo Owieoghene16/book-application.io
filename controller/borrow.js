@@ -14,8 +14,9 @@ export const borrowBook = async (req, res) => {
         association: [Borrow.User, Borrow.Book],
       }],
     });
-    const borrowedBook = await borrowBooks.findAll({ where: { borrowerId: req.user.id } });
-    res.status(200).json({ borrowedBook });
+    res.status(200).json({
+      message: 'Book has been borrowed succesfully',
+    });
   } catch (err) {
     res.status(500).json({ message: err });
   }
@@ -27,13 +28,7 @@ export const returnBooks = async (req, res) => {
     await borrowBooks.update({
       isActive: true,
     }, { where: { id } });
-    const returnedBook = await borrowBooks.findAll({
-      where: {
-        borrowerId: req.user.id,
-        isActive: true,
-      },
-    });
-    res.status(200).json({ returnedBook });
+    res.status(200).json({ message: 'Book has been returned succesfully' });
   } catch (err) {
     res.status(500).json({ message: err });
   }

@@ -1,10 +1,13 @@
 import express from 'express';
 import multer from 'multer';
-import { borrowBook, returnBooks, notReturnedBooks } from '../controller/borrow';
-import { createUser, loginUser } from '../controller/user';
-import { createBook, getUserBooks, modifyBook, deleteBook } from '../controller/book';
 import { verifyToken } from '../middleware/jwt';
 import { validateEmailAndPassword, loginEmailAndPassword } from '../middleware/user';
+import { validateBook } from '../middleware/borrow';
+import { borrowBook, returnBooks, notReturnedBooks } from '../controller/borrow';
+import { createUser, loginUser } from '../controller/user';
+import {
+  createBook, getUserBooks, modifyBook, deleteBook,
+} from '../controller/book';
 
 const upload = multer({ dest: 'uploads/files' });
 const router = express.Router();
@@ -19,7 +22,7 @@ router.post('/book/:id', verifyToken, modifyBook);
 
 router.post('/user/book', verifyToken, getUserBooks);
 
-router.post('/book/:id/borrow', verifyToken, borrowBook);
+router.post('/book/:id/borrow', verifyToken, validateBook, borrowBook);
 
 router.put('/book/:id/borrow', verifyToken, returnBooks);
 

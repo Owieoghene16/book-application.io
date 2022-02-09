@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import Sequelize from 'sequelize';
 import User from './user';
 import Book from './book';
