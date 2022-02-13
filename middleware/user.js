@@ -1,9 +1,4 @@
 /* eslint-disable import/prefer-default-export */
-import bcrypt from 'bcrypt';
-import db from '../database/database';
-
-const Users = db.user;
-
 export const validateEmailAndPassword = async (req, res, next) => {
   try {
     const {
