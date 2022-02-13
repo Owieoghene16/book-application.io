@@ -3,24 +3,24 @@ const dotenv = require('dotenv');
 dotenv.config();
 module.exports = {
   development: {
-    username: process.env.user,
-    password: process.env.password,
-    database: process.env.database,
-    host: process.env.host,
+    username: process.env.USER,
+    password: process.env.PASSWORD,
+    database: process.env.DATABASE,
+    host: process.env.HOST,
     dialect: 'postgres',
   },
   test: {
-    username: process.env.user,
-    password: process.env.password,
-    database: process.env.database,
-    host: process.env.host,
+    username: process.env.USER,
+    password: process.env.PASSWORD,
+    database: process.env.DATABASE,
+    host: process.env.HOST,
     dialect: 'postgres',
   },
   production: {
-    username: process.env.user,
-    password: process.env.password,
-    database: process.env.database,
-    host: process.env.host,
+    username: process.env.USER,
+    password: process.env.PASSWORD,
+    database: process.env.DATABASE,
+    host: process.env.HOST,
     dialect: 'postgres',
   },
 };

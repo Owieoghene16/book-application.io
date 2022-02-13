@@ -23,7 +23,7 @@ const Books = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'Book',
   });
-  Book.User = Book.belongsTo(User(sequelize, DataTypes), { foreignKey: 'userId' });
+  Book.User = Book.belongsTo(User(sequelize, DataTypes), { foreignKey: 'creatorId' });
   return Book;
 };
 

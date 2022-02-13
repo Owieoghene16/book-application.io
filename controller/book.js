@@ -28,7 +28,7 @@ export const createBook = async (req, res) => {
       price,
       imageUrl: uploadedImage.secure_url,
       bookUrl: uploadedBook.secure_url,
-      userId: req.user.id,
+      creatorId: req.user.id,
       include: [{
         association: Book.User,
       }],
@@ -64,7 +64,7 @@ export const modifyBook = async (req, res) => {
 
 export const getUserBooks = async (req, res) => {
   try {
-    const books = await userBook.findAll({ where: { userId: req.user.id } });
+    const books = await userBook.findAll({ where: { creatorId: req.user.id } });
     return res.status(200).json({ books });
   } catch (err) {
     return res.status(500).json({ message: err });
