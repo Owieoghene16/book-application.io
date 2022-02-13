@@ -27,7 +27,7 @@ export const returnBooks = async (req, res) => {
     const { id } = req.params;
     await borrowBooks.update({
       isActive: true,
-    }, { where: { id } });
+    }, { where: { bookId: id, borrowerId: req.user.id } });
     res.status(200).json({ message: 'Book has been returned succesfully' });
   } catch (err) {
     res.status(500).json({ message: err });
