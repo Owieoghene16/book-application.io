@@ -2,7 +2,6 @@ import express from 'express';
 import multer from 'multer';
 import { verifyToken } from '../middleware/jwt';
 import { validateEmailAndPassword, loginEmailAndPassword } from '../middleware/user';
-import { validateBook } from '../middleware/borrow';
 import { borrowBook, returnBooks, notReturnedBooks } from '../controller/borrow';
 import { createUser, loginUser } from '../controller/user';
 import {
@@ -22,7 +21,7 @@ router.post('/book/:id', verifyToken, modifyBook);
 
 router.post('/user/book', verifyToken, getUserBooks);
 
-router.post('/book/:id/borrow', verifyToken, validateBook, borrowBook);
+router.post('/book/:id/borrow', verifyToken, borrowBook);
 
 router.put('/book/:id/borrow', verifyToken, returnBooks);
 

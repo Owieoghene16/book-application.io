@@ -7,12 +7,16 @@ const Users = db.user;
 export const validateEmailAndPassword = async (req, res, next) => {
   try {
     const {
+      userName,
       email,
       password,
       reEnterPassword,
     } = req.body;
-    const oneEmailOnly = await Users.findOne({ where: { email } });
-    if (oneEmailOnly) return res.status(500).json({ message: 'Email already registered' });
+    if (!userName || !email || !password || !reEnterPassword) {
+      return res.status(401).json({
+        message: 'Fill the form throughly',
+      });
+    }
     if (password !== reEnterPassword) {
       return res.status(500).json({ message: 'reEnter Password' });
     }
@@ -28,13 +32,10 @@ export const loginEmailAndPassword = async (req, res, next) => {
       email,
       password,
     } = req.body;
-    const user = await Users.findOne({ where: { email } });
-    req.user = user;
-    if (user) {
-      const checkPassword = await bcrypt.compare(password, user.password);
-      req.password = checkPassword;
-    } else {
-      return res.status(500).json({ message: 'Email not registered' });
+    if (!email || !password) {
+      return res.status(401).json({
+        message: 'Fill the form throughly',
+      });
     }
     next();
   } catch (err) {
