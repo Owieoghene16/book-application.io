@@ -17,6 +17,6 @@ export const validateBook = async (req, res, next) => {
     if (borrowOneBook) return res.status(401).json({ message: 'Book has been borrowed by you' });
     next();
   } catch (err) {
-    res.status(500).json({ message: err });
+    return res.status(500).json({ message: err });
   }
 };
