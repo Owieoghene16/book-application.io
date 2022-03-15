@@ -15,10 +15,11 @@ describe('POST book', () => {
       .field('title', 'My first upload')
       .field('author', 'John')
       .field('price', '40$')
-      .field('description', 'My cats')
+      .field('description', 'I live at lagos, Nigeria')
       .attach('file', filePath1)
       .attach('file', filePath2);
     expect(res.status).toEqual(201);
+    expect(res.body).toHaveProperty('book');
   });
 
   it('should fail when an invalid user tries to create a book', async () => {
@@ -34,6 +35,7 @@ describe('POST book', () => {
       .attach('file', filePath1)
       .attach('file', filePath2);
     expect(res.status).toEqual(401);
+    expect(res.body).toEqual({ message: 'A token is required for authentication' });
   });
 });
 
@@ -48,6 +50,7 @@ describe('Book permissions', () => {
       .field('price', '30$')
       .field('description', 'My cats is lovely');
     expect(res.status).toEqual(200);
+    expect(res.body).toHaveProperty('updatedData');
   });
 
   it('Users should be able to delete their book', async () => {

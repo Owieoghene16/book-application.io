@@ -1,12 +1,11 @@
 import request from 'supertest';
 import { describe, expect, it } from '@jest/globals';
-import jwt from 'jsonwebtoken';
 import app from '../app';
 
 const auth = {};
 
 describe('Users Endpoint', () => {
-  it('Create user', async () => {
+  it('Create an user', async () => {
     const res = await request(app)
       .post('/signup')
       .set('Accept', 'application/json')
@@ -17,6 +16,7 @@ describe('Users Endpoint', () => {
         reEnterPassword: '12345678',
       });
     auth.token = res.body.token;
+    expect(res.body).toHaveProperty('token');
     expect(res.status).toEqual(201);
   });
 
@@ -29,7 +29,7 @@ describe('Users Endpoint', () => {
         password: '12345678',
       });
     auth.token = res.body.token;
-    auth.current_user_id = jwt.decode(auth.token).id;
+    expect(res.body).toHaveProperty('token');
     expect(res.status).toEqual(200);
   });
 });

@@ -10,6 +10,7 @@ describe('Borrow books', () => {
       .set('content-type', 'multipart/form-data')
       .set('authorization', auth.token);
     expect(res.status).toEqual(201);
+    expect(res.body).toEqual({ message: 'Book has been borrowed succesfully' });
   });
 
   it('User should be able to return books', async () => {
@@ -18,6 +19,7 @@ describe('Borrow books', () => {
       .set('content-type', 'multipart/form-data')
       .set('authorization', auth.token);
     expect(res.status).toEqual(200);
+    expect(res.body).toEqual({ message: 'Book has been returned succesfully' });
   });
 
   it('User should be able to view books borrowed but not returned', async () => {
@@ -26,5 +28,6 @@ describe('Borrow books', () => {
       .set('content-type', 'multipart/form-data')
       .set('authorization', auth.token);
     expect(res.status).toEqual(200);
+    expect(res.body).toHaveProperty('notReturned');
   });
 });
