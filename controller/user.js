@@ -21,10 +21,9 @@ export const createUser = async (req, res) => {
     const token = await jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
       expiresIn: '24h',
     });
-    return res.status(200).json({
+    return res.status(201).json({
       message: 'User created successfully',
       token,
-      user,
     });
   } catch (err) {
     return res.status(401).json({ message: err });
@@ -35,18 +34,18 @@ export const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await Users.findOne({ where: { email } });
-    if (user) {
-      const checkPassword = await bcrypt.compare(password, user.password);
-      const token = await jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
-        expiresIn: '24h',
+    if (!user) return res.status(400).json({ error: 'User does not exist' });
+
+    const checkPassword = await bcrypt.compare(password, user.password);
+    const token = await jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
+      expiresIn: '24h',
+    });
+    if (checkPassword) {
+      return res.status(200).json({
+        token,
+        message: 'Login successful',
       });
-      if (checkPassword) {
-        return res.status(200).json({
-          token,
-          message: 'Login successful',
-        });
-      } return res.status(400).json({ error: 'Invalid Password' });
-    } return res.status(400).json({ error: 'User does not exist' });
+    } return res.status(400).json({ error: 'Invalid Password' });
   } catch (err) {
     return res.status(401).json({ message: err });
   }

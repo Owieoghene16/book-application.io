@@ -4,14 +4,24 @@
   "description": "",
   "main": "index.js",
   "type": "module",
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "migrate": "npx sequelize-cli db:migrate",
-    "start": "nodemon --experimental-modules --es-module-specifier-resolution=node index.js"
+    "start": "nodemon --experimental-modules --es-module-specifier-resolution=node index.js",
+    "test": "cross-env NODE_ENV=test jest --testTimeout=10000",
+    "pretest": "cross-env NODE_ENV=test npm run migrate:reset",
+    "migrate:reset": "npx sequelize-cli db:migrate:undo:all && npm run migrate",
+    "migrate": "npx sequelize-cli db:migrate"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@jest/globals": "^27.5.1",
+    "babel": "^6.23.0",
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.0",
     "chai": "^4.3.6",
@@ -19,20 +29,31 @@
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "fs": "^0.0.1-security",
     "jsonwebtoken": "^8.5.1",
     "mocha": "^9.2.0",
     "multer": "^1.4.4",
+    "mz": "^2.7.0",
     "path": "^0.12.7",
     "pg": "^8.7.1",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.9.0",
-    "sequelize-cli": "^6.3.0"
+    "sequelize-cli": "^6.3.0",
+    "sequelize-test-helpers": "^1.4.2"
   },
   "devDependencies": {
+    "@babel/core": "^7.17.2",
+    "@babel/preset-env": "^7.16.11",
     "@typescript-eslint/eslint-plugin": "^5.3.1",
     "@typescript-eslint/parser": "^5.3.1",
+    "babel-cli": "^6.26.0",
+    "babel-jest": "^27.5.1",
+    "cross-env": "^7.0.3",
     "eslint": "^8.2.0",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.25.3"
+    "eslint-plugin-import": "^2.25.3",
+    "jest": "^27.5.1",
+    "regenerator-runtime": "^0.13.9",
+    "supertest": "^6.2.2"
   }
 }

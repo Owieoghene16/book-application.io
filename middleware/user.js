@@ -15,9 +15,9 @@ export const validateEmailAndPassword = async (req, res, next) => {
     if (password !== reEnterPassword) {
       return res.status(500).json({ message: 'reEnter Password' });
     }
-    next();
+    return next();
   } catch (err) {
-    res.status(200).json({ message: err });
+    return res.status(200).json({ message: err });
   }
 };
 
@@ -32,8 +32,8 @@ export const loginEmailAndPassword = async (req, res, next) => {
         message: 'Fill the form throughly',
       });
     }
-    next();
+    return next();
   } catch (err) {
-    res.status(500).json({ message: err });
+    return res.status(500).json({ message: err });
   }
 };
