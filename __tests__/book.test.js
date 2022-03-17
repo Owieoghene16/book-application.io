@@ -18,8 +18,13 @@ describe('POST book', () => {
       .field('description', 'I live at lagos, Nigeria')
       .attach('file', filePath1)
       .attach('file', filePath2);
+    const { book } = res.body;
     expect(res.status).toEqual(201);
     expect(res.body).toHaveProperty('book');
+    expect(res.body).toEqual({
+      message: 'Uploaded succesfully',
+      book,
+    });
   });
 
   it('should fail when an invalid user tries to create a book', async () => {
@@ -49,8 +54,21 @@ describe('Book permissions', () => {
       .field('author', 'John doe')
       .field('price', '30$')
       .field('description', 'My cats is lovely');
+    const { updatedData } = res.body;
     expect(res.status).toEqual(200);
     expect(res.body).toHaveProperty('updatedData');
+    expect(res.body).toEqual({ updatedData });
+  });
+
+  it('Users should be able to view all their books', async () => {
+    const res = await request(app)
+      .post('/user/book')
+      .set('content-type', 'multipart/form-data')
+      .set('authorization', auth.token);
+    const { books } = res.body;
+    expect(res.status).toEqual(200);
+    expect(res.body).toHaveProperty('books');
+    expect(res.body).toEqual({ books });
   });
 
   it('Users should be able to delete their book', async () => {

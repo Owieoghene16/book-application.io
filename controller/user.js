@@ -42,8 +42,8 @@ export const loginUser = async (req, res) => {
     });
     if (checkPassword) {
       return res.status(200).json({
-        token,
         message: 'Login successful',
+        token,
       });
     } return res.status(400).json({ error: 'Invalid Password' });
   } catch (err) {

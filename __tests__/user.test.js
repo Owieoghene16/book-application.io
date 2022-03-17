@@ -5,7 +5,7 @@ import app from '../app';
 const auth = {};
 
 describe('Users Endpoint', () => {
-  it('Create an user', async () => {
+  it('Create a user', async () => {
     const res = await request(app)
       .post('/signup')
       .set('Accept', 'application/json')
@@ -15,9 +15,14 @@ describe('Users Endpoint', () => {
         password: '12345678',
         reEnterPassword: '12345678',
       });
-    auth.token = res.body.token;
-    expect(res.body).toHaveProperty('token');
+    const { token } = res.body;
+    auth.token = token;
     expect(res.status).toEqual(201);
+    expect(res.body).toHaveProperty('token');
+    expect(res.body).toEqual({
+      message: 'User created successfully',
+      token,
+    });
   });
 
   it('Valid user can login to their account', async () => {
@@ -28,9 +33,14 @@ describe('Users Endpoint', () => {
         email: 'example1@gmail.com',
         password: '12345678',
       });
-    auth.token = res.body.token;
-    expect(res.body).toHaveProperty('token');
+    const { token } = res.body;
+    auth.token = token;
     expect(res.status).toEqual(200);
+    expect(res.body).toHaveProperty('token');
+    expect(res.body).toEqual({
+      message: 'Login successful',
+      token,
+    });
   });
 });
 

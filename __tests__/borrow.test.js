@@ -27,7 +27,9 @@ describe('Borrow books', () => {
       .get('/book/1/borrow?')
       .set('content-type', 'multipart/form-data')
       .set('authorization', auth.token);
+    const { notReturned } = res.body;
     expect(res.status).toEqual(200);
     expect(res.body).toHaveProperty('notReturned');
+    expect(res.body).toEqual({ notReturned });
   });
 });
