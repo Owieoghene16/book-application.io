@@ -14,7 +14,7 @@ export const createUser = async (req, res) => {
     } = req.body;
 
     const oneEmailOnly = await Users.findOne({ where: { email } });
-    if (oneEmailOnly) return res.status(500).json({ message: 'Email already registered' });
+    if (oneEmailOnly) return res.status(400).json({ message: 'Email already registered' });
 
     const hash = await bcrypt.hash(password, saltRounds);
     const user = await Users.create({ userName, email, password: hash });
@@ -26,7 +26,7 @@ export const createUser = async (req, res) => {
       token,
     });
   } catch (err) {
-    return res.status(401).json({ message: err });
+    return res.status(500).json({ message: err });
   }
 };
 
@@ -34,7 +34,7 @@ export const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await Users.findOne({ where: { email } });
-    if (!user) return res.status(400).json({ error: 'User does not exist' });
+    if (!user) return res.status(400).json({ message: 'User does not exist' });
 
     const checkPassword = await bcrypt.compare(password, user.password);
     const token = await jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
@@ -45,8 +45,8 @@ export const loginUser = async (req, res) => {
         message: 'Login successful',
         token,
       });
-    } return res.status(400).json({ error: 'Invalid Password' });
+    } return res.status(400).json({ message: 'Invalid Password' });
   } catch (err) {
-    return res.status(401).json({ message: err });
+    return res.status(500).json({ message: err });
   }
 };
