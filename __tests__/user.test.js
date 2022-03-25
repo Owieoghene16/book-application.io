@@ -1,6 +1,6 @@
 import request from 'supertest';
 import {
-  beforeAll, describe, expect, it,
+  beforeAll, describe, expect, test,
 } from '@jest/globals';
 import app from '../app';
 import db from '../database/database';
@@ -14,8 +14,8 @@ beforeAll(async () => {
   });
 });
 
-describe('Users Endpoint', () => {
-  it('Should fail if a user doesnt fill the form throughly', async () => {
+describe('users Endpoint', () => {
+  test('should fail if a user doesnt fill the form throughly', async () => {
     const res = await request(app)
       .post('/signup')
       .set('Accept', 'application/json')
@@ -29,7 +29,7 @@ describe('Users Endpoint', () => {
     expect(res.body).toEqual({ message: 'Fill the form throughly' });
   });
 
-  it('Should fail if the password length is not 8 or above', async () => {
+  test('should fail if the password length is not 8 or above', async () => {
     const res = await request(app)
       .post('/signup')
       .set('Accept', 'application/json')
@@ -43,7 +43,7 @@ describe('Users Endpoint', () => {
     expect(res.body).toEqual({ message: 'Length of password must be 8 or above' });
   });
 
-  it('Should fail if the first password doesnt match the second password', async () => {
+  test('should fail if the first password doesnt match the second password', async () => {
     const res = await request(app)
       .post('/signup')
       .set('Accept', 'application/json')
@@ -57,7 +57,7 @@ describe('Users Endpoint', () => {
     expect(res.body).toEqual({ message: 'reEnter Password' });
   });
 
-  it('Create a user', async () => {
+  test('create a user', async () => {
     const res = await request(app)
       .post('/signup')
       .set('Accept', 'application/json')
@@ -77,7 +77,7 @@ describe('Users Endpoint', () => {
     });
   });
 
-  it('Should fail if user email has already been registered', async () => {
+  test('should fail if user email has already been registered', async () => {
     const res = await request(app)
       .post('/signup')
       .set('Accept', 'application/json')
@@ -92,8 +92,8 @@ describe('Users Endpoint', () => {
   });
 });
 
-describe('User login endpoint', () => {
-  it('Should fail if form isnt fill throughly', async () => {
+describe('user login endpoint', () => {
+  test('should fail if form isnt fill throughly', async () => {
     const res = await request(app)
       .post('/signin')
       .set('Accept', 'application/json')
@@ -107,7 +107,7 @@ describe('User login endpoint', () => {
     });
   });
 
-  it('Valid user can login to their account', async () => {
+  test('valid user can login to their account', async () => {
     const res = await request(app)
       .post('/signin')
       .set('Accept', 'application/json')
@@ -125,7 +125,7 @@ describe('User login endpoint', () => {
     });
   });
 
-  it('Should fail if email does not exist in the database', async () => {
+  test('should fail if email does not exist in the database', async () => {
     const res = await request(app)
       .post('/signin')
       .set('Accept', 'application/json')
@@ -139,7 +139,7 @@ describe('User login endpoint', () => {
     });
   });
 
-  it('Should fail if password is incorrect', async () => {
+  test('should fail if password is incorrect', async () => {
     const res = await request(app)
       .post('/signin')
       .set('Accept', 'application/json')

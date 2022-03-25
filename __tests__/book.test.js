@@ -1,6 +1,6 @@
 import request from 'supertest';
 import {
-  beforeAll, describe, expect, it,
+  beforeAll, describe, expect, test,
 } from '@jest/globals';
 import app from '../app';
 import auth from './user.test';
@@ -13,11 +13,11 @@ beforeAll(async () => {
   });
 });
 
-describe('Create book endpoint', () => {
+describe('create book endpoint', () => {
   const filePath1 = `${__dirname}/image/pic.jpg`;
   const filePath2 = `${__dirname}/image/pdf02.pdf`;
 
-  it('should fail when an invalid user tries to create a book', async () => {
+  test('should fail when an invalid user tries to create a book', async () => {
     const res = await request(app)
       .post('/book')
       .set('content-type', 'multipart/form-data')
@@ -32,7 +32,7 @@ describe('Create book endpoint', () => {
     expect(res.body).toEqual({ message: 'A token is required for authentication' });
   });
 
-  it('should fail when an invalid token is passed to the header', async () => {
+  test('should fail when an invalid token is passed to the header', async () => {
     const res = await request(app)
       .post('/book')
       .set('content-type', 'multipart/form-data')
@@ -47,7 +47,7 @@ describe('Create book endpoint', () => {
     expect(res.body).toEqual({ message: 'Invalid Token' });
   });
 
-  it('Should fail if the first filePath isnt an image file', async () => {
+  test('should fail if the first filePath isnt an image file', async () => {
     const res = await request(app)
       .post('/book')
       .set('content-type', 'multipart/form-data')
@@ -64,7 +64,7 @@ describe('Create book endpoint', () => {
     });
   });
 
-  it('Should fail if the second filePath isnt a pdf file', async () => {
+  test('should fail if the second filePath isnt a pdf file', async () => {
     const res = await request(app)
       .post('/book')
       .set('content-type', 'multipart/form-data')
@@ -81,7 +81,7 @@ describe('Create book endpoint', () => {
     });
   });
 
-  it('Valid Users should be able to create a book', async () => {
+  test('valid users should be able to create a book', async () => {
     const res = await request(app)
       .post('/book')
       .set('content-type', 'multipart/form-data')
@@ -102,8 +102,8 @@ describe('Create book endpoint', () => {
   });
 });
 
-describe('Book permissions', () => {
-  it('Users should be able to modify their books', async () => {
+describe('book permissions', () => {
+  test('users should be able to modify their books', async () => {
     const res = await request(app)
       .post('/book/:id')
       .set('content-type', 'multipart/form-data')
@@ -118,7 +118,7 @@ describe('Book permissions', () => {
     expect(res.body).toEqual({ updatedData });
   });
 
-  it('Users should be able to view all their books', async () => {
+  test('users should be able to view all their books', async () => {
     const res = await request(app)
       .post('/user/book')
       .set('content-type', 'multipart/form-data')
@@ -129,7 +129,7 @@ describe('Book permissions', () => {
     expect(res.body).toEqual({ books });
   });
 
-  it('Users should be able to delete their book', async () => {
+  test('users should be able to delete their book', async () => {
     const res = await request(app)
       .delete('/book/1')
       .set('content-type', 'multipart/form-data')

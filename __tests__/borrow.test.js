@@ -1,6 +1,6 @@
 import request from 'supertest';
 import {
-  beforeAll, describe, expect, it,
+  beforeAll, describe, expect, test,
 } from '@jest/globals';
 import app from '../app';
 import auth from './user.test';
@@ -13,8 +13,8 @@ beforeAll(async () => {
   });
 });
 
-describe('Borrow book endpoint', () => {
-  it('User should be able to borrow a book', async () => {
+describe('borrow book endpoint', () => {
+  test('user should be able to borrow a book', async () => {
     const res = await request(app)
       .post('/book/1/borrow')
       .set('content-type', 'multipart/form-data')
@@ -23,7 +23,7 @@ describe('Borrow book endpoint', () => {
     expect(res.body).toEqual({ message: 'Book has been borrowed succesfully' });
   });
 
-  it('Should fail if no token is passes', async () => {
+  test('should fail if no token is passes', async () => {
     const res = await request(app)
       .post('/book/1/borrow')
       .set('content-type', 'multipart/form-data')
@@ -33,8 +33,8 @@ describe('Borrow book endpoint', () => {
   });
 });
 
-describe('Return book', () => {
-  it('User should be able to return books', async () => {
+describe('return book', () => {
+  test('user should be able to return books', async () => {
     const res = await request(app)
       .put('/book/1/borrow')
       .set('content-type', 'multipart/form-data')
@@ -43,7 +43,7 @@ describe('Return book', () => {
     expect(res.body).toEqual({ message: 'Book has been returned succesfully' });
   });
 
-  it('Should fail if no token is passes to the header', async () => {
+  test('should fail if no token is passes to the header', async () => {
     const res = await request(app)
       .put('/book/1/borrow')
       .set('content-type', 'multipart/form-data')
@@ -53,8 +53,8 @@ describe('Return book', () => {
   });
 });
 
-describe('Return book endpoints', () => {
-  it('User should be able to view books borrowed but not returned', async () => {
+describe('return book endpoints', () => {
+  test('user should be able to view books borrowed but not returned', async () => {
     const res = await request(app)
       .get('/book/1/borrow?')
       .set('content-type', 'multipart/form-data')
