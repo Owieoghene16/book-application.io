@@ -18,6 +18,7 @@ export const createBook = async (req, res) => {
       title,
       author,
       price,
+      description,
     } = req.body;
 
     const uploadedImage = await cloudinary.uploader.upload(req.files[0].path);
@@ -26,6 +27,7 @@ export const createBook = async (req, res) => {
       title,
       author,
       price,
+      description,
       imageUrl: uploadedImage.secure_url,
       bookUrl: uploadedBook.secure_url,
       creatorId: req.user.id,
@@ -33,12 +35,12 @@ export const createBook = async (req, res) => {
         association: Book.User,
       }],
     });
-    return res.status(200).json({
+    return res.status(201).json({
       message: 'Uploaded succesfully',
       book,
     });
   } catch (err) {
-    return res.status(400).json({ message: err });
+    return res.status(500).json({ message: err });
   }
 };
 
@@ -49,12 +51,14 @@ export const modifyBook = async (req, res) => {
       title,
       author,
       price,
+      description,
     } = req.body;
 
     const updatedData = await userBook.update({
       title,
       author,
       price,
+      description,
     }, { where: { id } });
     return res.status(200).json({ updatedData });
   } catch (err) {
@@ -75,7 +79,7 @@ export const deleteBook = async (req, res) => {
   try {
     const { id } = req.params;
     await userBook.destroy({ where: { id } });
-    return res.status(200).json({ message: 'Book is deleted' });
+    return res.status(200).json({ message: 'Book has been deleted sucessfully' });
   } catch (err) {
     return res.status(500).json({ message: err });
   }

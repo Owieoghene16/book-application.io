@@ -1,16 +1,16 @@
+/* eslint-disable import/prefer-default-export */
 import jwt from 'jsonwebtoken';
 
-// eslint-disable-next-line import/prefer-default-export
 export const verifyToken = async (req, res, next) => {
-  const token = req.headers.authorization;
-  if (!token) {
-    res.status(401).json({ message: 'A token is required for authentication' });
-  }
   try {
+    const token = req.headers.authorization;
+    if (!token) {
+      return res.status(401).json({ message: 'A token is required for authentication' });
+    }
     const decoded = await jwt.verify(token, process.env.JWT_SECRET);
     req.user = decoded;
+    return next();
   } catch (err) {
-    return res.status(401).json({ message: 'Invalid Token' });
+    return res.status(400).json({ message: 'Invalid Token' });
   }
-  next();
 };

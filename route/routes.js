@@ -7,15 +7,17 @@ import { createUser, loginUser } from '../controller/user';
 import {
   createBook, getUserBooks, modifyBook, deleteBook,
 } from '../controller/book';
+import fileFilter from '../middleware/multer';
 
 const upload = multer({ dest: 'uploads/files' });
+
 const router = express.Router();
 
 router.post('/signup', validateEmailAndPassword, createUser);
 
 router.post('/signin', loginEmailAndPassword, loginUser);
 
-router.post('/book', verifyToken, upload.array('imageUrl', 2), createBook);
+router.post('/book', verifyToken, upload.array('file', 2), fileFilter, createBook);
 
 router.post('/book/:id', verifyToken, modifyBook);
 

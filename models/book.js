@@ -17,6 +17,7 @@ const Books = (sequelize, DataTypes) => {
     title: DataTypes.STRING,
     author: DataTypes.STRING,
     price: DataTypes.STRING,
+    description: DataTypes.STRING,
     imageUrl: DataTypes.STRING,
     bookUrl: DataTypes.STRING,
   }, {
