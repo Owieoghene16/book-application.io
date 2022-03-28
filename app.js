@@ -11,4 +11,8 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/', router);
 
+app.get('/', (req, res) => {
+  res.status(200).json({ message: 'App is running' });
+});
+
 export default app;

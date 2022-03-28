@@ -1,7 +1,5 @@
 import app from './app';
 
-const PORT = 8000;
-
-app.listen(PORT, () => {
-  console.log(`http://localhost:${PORT}.`);
+app.listen(process.env.PORT || 5000, () => {
+  console.log(`http://localhost:5000.`);
 });

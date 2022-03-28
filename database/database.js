@@ -6,7 +6,7 @@ import Borrow from '../models/borrow';
 
 dotenv.config();
 
-const sequelize = new Sequelize(process.env.DATABASE, process.env.USER, process.env.PASSWORD, {
+const sequelize = new Sequelize(process.env.PG_DATABASE, {
   host: process.env.HOST,
   dialect: 'postgres',
   operatorsAliases: false,
