@@ -1,6 +1,7 @@
 const dotenv = require('dotenv');
 
 dotenv.config();
+console.log(process.env.USER, 'iiiiiiiiiiii', process.env.PASSWORD, 'mmmmmmmmmmm', process.env.DATABASE);
 module.exports = {
   development: {
     username: process.env.USER,
@@ -17,15 +18,9 @@ module.exports = {
     dialect: 'postgres',
   },
   production: {
-    client: 'pg',
+    username: process.env.USER,
+    password: process.env.PASSWORD,
+    database: process.env.DATABASE,
     dialect: 'postgres',
-    connection: process.env.DATABASE_URL,
-    pool: {
-      min: 0,
-      max: 5,
-    },
-    migrations: {
-      directory: '../migrations',
-    },
   },
 };

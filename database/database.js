@@ -6,6 +6,7 @@ import Borrow from '../models/borrow';
 
 dotenv.config();
 
+console.log(process.env.DATABASE_URL, 'PPPPPPPPPPPPPPPPPPP');
 const sequelize = new Sequelize(process.env.DATABASE_URL, {
   host: process.env.HOST,
   dialect: 'postgres',
