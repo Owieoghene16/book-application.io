@@ -18,6 +18,7 @@ module.exports = {
   },
   production: {
     client: 'pg',
+    dialect: 'postgres',
     connection: process.env.DATABASE_URL,
     pool: {
       min: 0,
