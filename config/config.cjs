@@ -21,15 +21,12 @@ module.exports = {
     use_env_variable: 'DATABASE_URL',
     dialect: 'postgres',
     protocol: 'postgres',
-    user: 'USER',
-    username: 'USER',
-    password: 'PASSWORD',
-    database: 'DATABASE',
-    host: 'HOST',
-    port: '5432',
+    ssl: true,
     dialectOptions: {
-      require: true,
-      rejectUnauthorized: false,
+      ssl: {
+        require: true,
+        rejectUnauthorized: false,
+      },
     },
   },
 };
