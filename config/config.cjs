@@ -25,5 +25,10 @@ module.exports = {
     username: process.env.USER,
     password: process.env.PASSWORD,
     database: process.env.DATABASE,
+    host: 'localhost',
+    port: '5432',
+    dialectOptions: {
+      ssl: { require: true },
+    },
   },
 };

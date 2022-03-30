@@ -8,7 +8,7 @@ dotenv.config();
 
 console.log(process.env.DATABASE_URL, 'PPPPPPPPPPPPPPPPPPP');
 const sequelize = new Sequelize(process.env.DATABASE_URL, {
-  host: '127.0.0.1',
+  host: 'localhost',
   dialect: 'postgres',
   operatorsAliases: false,
 
