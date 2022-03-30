@@ -13,11 +13,11 @@ const upload = multer({ dest: 'uploads/files' });
 
 const router = express.Router();
 
-router.get('/signup', validateEmailAndPassword, createUser);
+router.post('/signup', validateEmailAndPassword, createUser);
 
-router.get('/signin', loginEmailAndPassword, loginUser);
+router.post('/signin', loginEmailAndPassword, loginUser);
 
-router.get('/book', verifyToken, upload.array('file', 2), fileFilter, createBook);
+router.post('/book', verifyToken, upload.array('file', 2), fileFilter, createBook);
 
 router.post('/book/:id', verifyToken, modifyBook);
 
