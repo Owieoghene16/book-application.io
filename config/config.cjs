@@ -1,7 +1,6 @@
 const dotenv = require('dotenv');
 
 dotenv.config();
-console.log(process.env.USER, 'iiiiiiiiiiii', process.env.PASSWORD, 'mmmmmmmmmmm', process.env.DATABASE);
 module.exports = {
   development: {
     username: process.env.USER,
