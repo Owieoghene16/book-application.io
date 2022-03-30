@@ -21,5 +21,9 @@ module.exports = {
     use_env_variable: 'DATABASE_URL',
     dialect: 'postgres',
     protocol: 'postgres',
+    user: process.env.USER,
+    username: process.env.USER,
+    password: process.env.PASSWORD,
+    database: process.env.DATABASE,
   },
 };
