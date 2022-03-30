@@ -28,7 +28,7 @@ module.exports = {
     host: 'localhost',
     port: '5432',
     dialectOptions: {
-      ssl: { require: true },
+      rejectUnauthorized: false,
     },
   },
 };
