@@ -19,6 +19,8 @@ const sequelize = new Sequelize(process.env.DATABASE_URL, {
   },
 });
 
+console.log('ffffffff', 'connected');
+
 const db = {};
 
 db.Sequelize = Sequelize;
