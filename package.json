@@ -11,7 +11,6 @@
     ]
   },
   "scripts": {
-    "build": "babel src -d build",
     "start": "npm run dev",
     "dev": "npm run heroku:migrate && node --experimental-modules --es-module-specifier-resolution=node index.js",
     "test": "cross-env NODE_ENV=test jest --coverage --testTimeout=10000 --detectOpenHandles",
