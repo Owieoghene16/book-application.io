@@ -13,6 +13,7 @@ const sequelize = new Sequelize(process.env.DATABASE_URL, {
       rejectUnauthorized: false,
     },
   },
+
   /* host: 'localhost',
   dialect: 'postgres',
   operatorsAliases: false,
@@ -24,8 +25,6 @@ const sequelize = new Sequelize(process.env.DATABASE_URL, {
     idle: 10000,
   }, */
 });
-
-console.log('ffffffff', 'connected');
 
 const db = {};
 

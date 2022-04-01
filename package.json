@@ -11,17 +11,19 @@
     ]
   },
   "scripts": {
-    "start": "node --experimental-modules --es-module-specifier-resolution=node index.js",
+    "build": "babel src -d build",
+    "start": "npm run dev",
+    "dev": "npm run heroku:migrate && node --experimental-modules --es-module-specifier-resolution=node index.js",
     "test": "cross-env NODE_ENV=test jest --coverage --testTimeout=10000 --detectOpenHandles",
     "pretest": "cross-env NODE_ENV=test npm run migrate:reset",
     "migrate:reset": "npx sequelize-cli db:migrate:undo:all && npm run migrate",
-    "migrate": "npx sequelize-cli db:migrate"
+    "migrate": "npx sequelize-cli db:migrate",
+    "heroku:migrate": "heroku run npx sequelize db:migrate"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@jest/globals": "^27.5.1",
-    "babel": "^6.23.0",
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.0",
     "chai": "^4.3.6",
@@ -45,12 +47,11 @@
     "sequelize-test-helpers": "^1.4.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.17.2",
-    "@babel/preset-env": "^7.16.11",
     "@typescript-eslint/eslint-plugin": "^5.3.1",
     "@typescript-eslint/parser": "^5.3.1",
     "babel-cli": "^6.26.0",
     "babel-jest": "^27.5.1",
+    "babel-preset-env": "^1.7.0",
     "cross-env": "^7.0.3",
     "eslint": "^8.2.0",
     "eslint-config-airbnb-base": "^15.0.0",
