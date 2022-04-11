@@ -1,6 +1,6 @@
 version: 2.1
 jobs:
-  build:
+  build-and-test:
     docker:
       - image: cimg/node:14.17.3
     steps:
