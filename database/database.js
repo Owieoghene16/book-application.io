@@ -14,7 +14,7 @@ const sequelize = new Sequelize(process.env.DATABASE_URL, {
     },
   }, */
 
-  host: 'localhost',
+  host: 'postgresdb',
   dialect: 'postgres',
   operatorsAliases: false,
 
