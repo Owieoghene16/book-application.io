@@ -6,7 +6,7 @@ import Borrow from '../models/borrow';
 
 dotenv.config();
 
-const sequelize = new Sequelize(process.env.DATABASE_URL, {
+const sequelize = new Sequelize(process.env.DATABASE_URL2, {
   /* dialectOptions: {
     ssl: {
       require: true,

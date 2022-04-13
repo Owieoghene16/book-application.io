@@ -1,6 +1,6 @@
 import request from 'supertest';
 import {
-  beforeAll, afterAll, describe, expect, test,
+  beforeAll, describe, expect, test,
 } from '@jest/globals';
 import app from '../app';
 import db from '../database/database';
@@ -14,12 +14,9 @@ beforeAll(async () => {
   });
 });
 
-afterAll(async () => {
-  await new Promise((resolve) => setTimeout(() => resolve(), 10000)); // avoid jest open handle error
-});
-
 describe('users Endpoint', () => {
   test('should fail if a user doesnt fill the form throughly', async () => {
+    jest.setTimeout(30000);
     const res = await request(app)
       .post('/signup')
       .set('Accept', 'application/json')
@@ -34,6 +31,7 @@ describe('users Endpoint', () => {
   });
 
   test('should fail if the password length is not 8 or above', async () => {
+    jest.setTimeout(30000);
     const res = await request(app)
       .post('/signup')
       .set('Accept', 'application/json')
@@ -48,6 +46,7 @@ describe('users Endpoint', () => {
   });
 
   test('should fail if the first password doesnt match the second password', async () => {
+    jest.setTimeout(30000);
     const res = await request(app)
       .post('/signup')
       .set('Accept', 'application/json')
@@ -62,6 +61,7 @@ describe('users Endpoint', () => {
   });
 
   test('create a user', async () => {
+    jest.setTimeout(30000);
     const res = await request(app)
       .post('/signup')
       .set('Accept', 'application/json')
@@ -82,6 +82,7 @@ describe('users Endpoint', () => {
   });
 
   test('should fail if user email has already been registered', async () => {
+    jest.setTimeout(30000);
     const res = await request(app)
       .post('/signup')
       .set('Accept', 'application/json')
@@ -97,6 +98,7 @@ describe('users Endpoint', () => {
 });
 
 describe('user login endpoint', () => {
+  jest.setTimeout(30000);
   test('should fail if form isnt fill throughly', async () => {
     const res = await request(app)
       .post('/signin')
@@ -112,6 +114,7 @@ describe('user login endpoint', () => {
   });
 
   test('valid user can login to their account', async () => {
+    jest.setTimeout(30000);
     const res = await request(app)
       .post('/signin')
       .set('Accept', 'application/json')
@@ -130,6 +133,7 @@ describe('user login endpoint', () => {
   });
 
   test('should fail if email does not exist in the database', async () => {
+    jest.setTimeout(30000);
     const res = await request(app)
       .post('/signin')
       .set('Accept', 'application/json')
@@ -144,6 +148,7 @@ describe('user login endpoint', () => {
   });
 
   test('should fail if password is incorrect', async () => {
+    jest.setTimeout(30000);
     const res = await request(app)
       .post('/signin')
       .set('Accept', 'application/json')

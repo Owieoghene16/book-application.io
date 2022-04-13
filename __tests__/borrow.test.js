@@ -1,6 +1,6 @@
 import request from 'supertest';
 import {
-  beforeAll, afterAll, describe, expect, test,
+  beforeAll, describe, expect, test,
 } from '@jest/globals';
 import app from '../app';
 import auth from './user.test';
@@ -11,10 +11,6 @@ beforeAll(async () => {
     where: {},
     truncate: true,
   });
-});
-
-afterAll(async () => {
-  await new Promise((resolve) => setTimeout(() => resolve(), 10000)); // avoid jest open handle error
 });
 
 describe('borrow book endpoint', () => {
