@@ -1,6 +1,6 @@
 import request from 'supertest';
 import {
-  beforeAll, beforeEach, describe, expect, test, jest,
+  beforeAll, afterAll, describe, expect, test,
 } from '@jest/globals';
 import app from '../app';
 import db from '../database/database';
@@ -14,8 +14,8 @@ beforeAll(async () => {
   });
 });
 
-beforeEach(async () => {
-  await jest.setTimeout(10000);
+afterAll(async () => {
+  await new Promise((resolve) => setTimeout(() => resolve(), 10000)); // avoid jest open handle error
 });
 
 describe('users Endpoint', () => {
