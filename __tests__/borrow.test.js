@@ -1,6 +1,6 @@
 import request from 'supertest';
 import {
-  beforeAll, describe, expect, test,
+  beforeAll, afterAll, describe, expect, test,
 } from '@jest/globals';
 import app from '../app';
 import auth from './user.test';
@@ -69,4 +69,8 @@ describe('return book endpoints', () => {
     expect(res.body).toHaveProperty('notReturned');
     expect(res.body).toEqual({ notReturned });
   });
+});
+
+afterAll(async () => {
+  await app.close();
 });
