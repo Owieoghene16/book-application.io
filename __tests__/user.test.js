@@ -1,6 +1,6 @@
 import request from 'supertest';
 import {
-  beforeAll, describe, expect, test,
+  beforeAll, beforeEach, describe, expect, test, jest,
 } from '@jest/globals';
 import app from '../app';
 import db from '../database/database';
@@ -12,6 +12,10 @@ beforeAll(async () => {
     where: {},
     truncate: true,
   });
+});
+
+beforeEach(async () => {
+  await jest.setTimeout(10000);
 });
 
 describe('users Endpoint', () => {
