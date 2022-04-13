@@ -18,6 +18,7 @@ describe('create book endpoint', () => {
   const filePath2 = `${__dirname}/image/pdf02.pdf`;
 
   test('should fail when an invalid user tries to create a book', async () => {
+    jest.setTimeout(30000);
     const res = await request(app)
       .post('/book')
       .set('content-type', 'multipart/form-data')
@@ -33,6 +34,7 @@ describe('create book endpoint', () => {
   });
 
   test('should fail when an invalid token is passed to the header', async () => {
+    jest.setTimeout(30000);
     const res = await request(app)
       .post('/book')
       .set('content-type', 'multipart/form-data')
@@ -48,6 +50,7 @@ describe('create book endpoint', () => {
   });
 
   test('should fail if the first filePath isnt an image file', async () => {
+    jest.setTimeout(30000);
     const res = await request(app)
       .post('/book')
       .set('content-type', 'multipart/form-data')
@@ -65,6 +68,7 @@ describe('create book endpoint', () => {
   });
 
   test('should fail if the second filePath isnt a pdf file', async () => {
+    jest.setTimeout(30000);
     const res = await request(app)
       .post('/book')
       .set('content-type', 'multipart/form-data')
@@ -82,6 +86,7 @@ describe('create book endpoint', () => {
   });
 
   test('valid users should be able to create a book', async () => {
+    jest.setTimeout(30000);
     const res = await request(app)
       .post('/book')
       .set('content-type', 'multipart/form-data')
@@ -104,6 +109,7 @@ describe('create book endpoint', () => {
 
 describe('book permissions', () => {
   test('users should be able to modify their books', async () => {
+    jest.setTimeout(30000);
     const res = await request(app)
       .post('/book/:id')
       .set('content-type', 'multipart/form-data')
@@ -119,6 +125,7 @@ describe('book permissions', () => {
   });
 
   test('users should be able to view all their books', async () => {
+    jest.setTimeout(30000);
     const res = await request(app)
       .post('/user/book')
       .set('content-type', 'multipart/form-data')
@@ -130,6 +137,7 @@ describe('book permissions', () => {
   });
 
   test('users should be able to delete their book', async () => {
+    jest.setTimeout(30000);
     const res = await request(app)
       .delete('/book/1')
       .set('content-type', 'multipart/form-data')

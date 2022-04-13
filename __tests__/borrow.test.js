@@ -15,6 +15,7 @@ beforeAll(async () => {
 
 describe('borrow book endpoint', () => {
   test('user should be able to borrow a book', async () => {
+    jest.setTimeout(30000);
     const res = await request(app)
       .post('/book/1/borrow')
       .set('content-type', 'multipart/form-data')
@@ -24,6 +25,7 @@ describe('borrow book endpoint', () => {
   });
 
   test('should fail if no token is passes', async () => {
+    jest.setTimeout(30000);
     const res = await request(app)
       .post('/book/1/borrow')
       .set('content-type', 'multipart/form-data')
@@ -35,6 +37,7 @@ describe('borrow book endpoint', () => {
 
 describe('return book', () => {
   test('user should be able to return books', async () => {
+    jest.setTimeout(30000);
     const res = await request(app)
       .put('/book/1/borrow')
       .set('content-type', 'multipart/form-data')
@@ -44,6 +47,7 @@ describe('return book', () => {
   });
 
   test('should fail if no token is passes to the header', async () => {
+    jest.setTimeout(30000);
     const res = await request(app)
       .put('/book/1/borrow')
       .set('content-type', 'multipart/form-data')
@@ -55,6 +59,7 @@ describe('return book', () => {
 
 describe('return book endpoints', () => {
   test('user should be able to view books borrowed but not returned', async () => {
+    jest.setTimeout(30000);
     const res = await request(app)
       .get('/book/1/borrow?')
       .set('content-type', 'multipart/form-data')
