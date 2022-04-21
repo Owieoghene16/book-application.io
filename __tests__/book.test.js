@@ -1,6 +1,6 @@
 import request from 'supertest';
 import {
-  beforeAll, afterAll, describe, expect, test,
+  beforeAll, describe, expect, test,
 } from '@jest/globals';
 import app from '../app';
 import auth from './user.test';
@@ -137,8 +137,4 @@ describe('book permissions', () => {
     expect(res.status).toEqual(200);
     expect(res.body).toEqual({ message: 'Book has been deleted sucessfully' });
   });
-});
-
-afterAll(async () => {
-  await app.close();
 });

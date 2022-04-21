@@ -1,6 +1,6 @@
 import request from 'supertest';
 import {
-  beforeAll, afterAll, describe, expect, test,
+  beforeAll, describe, expect, test,
 } from '@jest/globals';
 import app from '../app';
 import db from '../database/database';
@@ -152,10 +152,6 @@ describe('user login endpoint', () => {
       message: 'Invalid Password',
     });
   });
-});
-
-afterAll(async () => {
-  await app.close();
 });
 
 export default auth;
