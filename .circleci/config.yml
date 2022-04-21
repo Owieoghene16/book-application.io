@@ -27,7 +27,6 @@ jobs:
           # If you are using yarn, change the line below from "npm" to "yarn"
           pkg-manager: npm
         
-      - run: dockerize -wait tcp://localhost:5432 -timeout 1m
       - run:
           name: Run tests
           command: npm test
