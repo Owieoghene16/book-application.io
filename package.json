@@ -13,7 +13,7 @@
   "scripts": {
     "start": "npm run dev",
     "dev": "node --experimental-modules --es-module-specifier-resolution=node index.js",
-    "test": "cross-env NODE_ENV=test jest --testTimeout=10000 --detectOpenHandles --coverage",
+    "test": "cross-env NODE_ENV=test jest --testTimeout=10000 --detectOpenHandles ",
     "pretest": "cross-env NODE_ENV=test npm run migrate:reset",
     "migrate:reset": "npx sequelize-cli db:migrate:undo:all && npm run migrate",
     "migrate": "npx sequelize-cli db:migrate",
