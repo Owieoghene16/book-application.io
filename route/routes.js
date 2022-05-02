@@ -5,7 +5,7 @@ import { validateEmailAndPassword, loginEmailAndPassword } from '../middleware/u
 import { borrowBook, returnBooks, notReturnedBooks } from '../controller/borrow';
 import { createUser, loginUser } from '../controller/user';
 import {
-  createBook, getUserBooks, modifyBook, deleteBook,
+  createBook, getUserBooks, modifyBook, deleteBook, getAllBooks,
 } from '../controller/book';
 import fileFilter from '../middleware/multer';
 
@@ -22,6 +22,8 @@ router.post('/book', verifyToken, upload.array('file', 2), fileFilter, createBoo
 router.post('/book/:id', verifyToken, modifyBook);
 
 router.post('/user/book', verifyToken, getUserBooks);
+
+router.post('/home', verifyToken, getAllBooks);
 
 router.post('/book/:id/borrow', verifyToken, borrowBook);
 

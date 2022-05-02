@@ -1,5 +1,6 @@
 import Sequelize from 'sequelize';
-import borrow from './borrow';
+import Borrow from './borrow';
+
 const Users = (sequelize, DataTypes) => {
   class User extends Sequelize.Model {
     /**

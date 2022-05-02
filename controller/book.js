@@ -75,6 +75,15 @@ export const getUserBooks = async (req, res) => {
   }
 };
 
+export const getAllBooks = async (req, res) => {
+  try {
+    const createdBooks = await userBook.findAll({});
+    return res.status(200).json({ createdBooks });
+  } catch (err) {
+    return res.status(500).json({ message: err });
+  }
+};
+
 export const deleteBook = async (req, res) => {
   try {
     const { id } = req.params;
