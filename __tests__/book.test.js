@@ -19,7 +19,7 @@ describe('create book endpoint', () => {
 
   test('should fail when an invalid user tries to create a book', async () => {
     const res = await request(app)
-      .post('/book')
+      .post('/api/book')
       .set('content-type', 'multipart/form-data')
       .set('authorization', '')
       .field('title', 'My first upload')
@@ -34,7 +34,7 @@ describe('create book endpoint', () => {
 
   test('should fail when an invalid token is passed to the header', async () => {
     const res = await request(app)
-      .post('/book')
+      .post('/api/book')
       .set('content-type', 'multipart/form-data')
       .set('authorization', 'invalidToken')
       .field('title', 'My first upload')
@@ -49,7 +49,7 @@ describe('create book endpoint', () => {
 
   test('should fail if the first filePath isnt an image file', async () => {
     const res = await request(app)
-      .post('/book')
+      .post('/api/book')
       .set('content-type', 'multipart/form-data')
       .set('authorization', auth.token)
       .field('title', 'My first upload')
@@ -66,7 +66,7 @@ describe('create book endpoint', () => {
 
   test('should fail if the second filePath isnt a pdf file', async () => {
     const res = await request(app)
-      .post('/book')
+      .post('/api/book')
       .set('content-type', 'multipart/form-data')
       .set('authorization', auth.token)
       .field('title', 'My first upload')
@@ -83,7 +83,7 @@ describe('create book endpoint', () => {
 
   test('valid users should be able to create a book', async () => {
     const res = await request(app)
-      .post('/book')
+      .post('/api/book')
       .set('content-type', 'multipart/form-data')
       .set('authorization', auth.token)
       .field('title', 'My first upload')
@@ -92,12 +92,9 @@ describe('create book endpoint', () => {
       .field('description', 'I live at lagos, Nigeria')
       .attach('file', filePath1)
       .attach('file', filePath2);
-    const { book } = res.body;
     expect(res.status).toEqual(201);
-    expect(res.body).toHaveProperty('book');
     expect(res.body).toEqual({
-      message: 'Uploaded succesfully',
-      book,
+      message: 'Book Created Succesfully',
     });
   });
 });
@@ -105,33 +102,31 @@ describe('create book endpoint', () => {
 describe('book permissions', () => {
   test('users should be able to modify their books', async () => {
     const res = await request(app)
-      .post('/book/:id')
+      .post('/api/book/:id')
       .set('content-type', 'multipart/form-data')
       .set('authorization', auth.token)
       .field('title', 'My last upload')
       .field('author', 'John doe')
       .field('price', '30$')
       .field('description', 'My cats is lovely');
-    const { updatedData } = res.body;
     expect(res.status).toEqual(200);
-    expect(res.body).toHaveProperty('updatedData');
-    expect(res.body).toEqual({ updatedData });
+    expect(res.body).toEqual({
+      message: 'Book updated sucessfully',
+    });
   });
 
   test('users should be able to view all their books', async () => {
     const res = await request(app)
-      .post('/user/book')
+      .post('/api/user/book')
       .set('content-type', 'multipart/form-data')
       .set('authorization', auth.token);
-    const { books } = res.body;
     expect(res.status).toEqual(200);
     expect(res.body).toHaveProperty('books');
-    expect(res.body).toEqual({ books });
   });
 
   test('users should be able to delete their book', async () => {
     const res = await request(app)
-      .delete('/book/1')
+      .delete('/api/book/1')
       .set('content-type', 'multipart/form-data')
       .set('authorization', auth.token);
     expect(res.status).toEqual(200);

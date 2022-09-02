@@ -16,16 +16,16 @@ beforeAll(async () => {
 describe('borrow book endpoint', () => {
   test('user should be able to borrow a book', async () => {
     const res = await request(app)
-      .post('/book/1/borrow')
+      .post('/api/book/1/borrow')
       .set('content-type', 'multipart/form-data')
       .set('authorization', auth.token);
     expect(res.status).toEqual(201);
-    expect(res.body).toEqual({ message: 'Book has been borrowed succesfully' });
+    expect(res.body).toEqual({ message: 'Book borrowed succesfully' });
   });
 
   test('should fail if no token is passes', async () => {
     const res = await request(app)
-      .post('/book/1/borrow')
+      .post('/api/book/1/borrow')
       .set('content-type', 'multipart/form-data')
       .set('authorization', '');
     expect(res.status).toEqual(401);
@@ -36,16 +36,16 @@ describe('borrow book endpoint', () => {
 describe('return book', () => {
   test('user should be able to return books', async () => {
     const res = await request(app)
-      .put('/book/1/borrow')
+      .put('/api/book/1/borrow')
       .set('content-type', 'multipart/form-data')
       .set('authorization', auth.token);
     expect(res.status).toEqual(200);
-    expect(res.body).toEqual({ message: 'Book has been returned succesfully' });
+    expect(res.body).toEqual({ message: 'Book returned succesfully' });
   });
 
   test('should fail if no token is passes to the header', async () => {
     const res = await request(app)
-      .put('/book/1/borrow')
+      .put('/api/book/1/borrow')
       .set('content-type', 'multipart/form-data')
       .set('authorization', '');
     expect(res.status).toEqual(401);
@@ -56,12 +56,10 @@ describe('return book', () => {
 describe('return book endpoints', () => {
   test('user should be able to view books borrowed but not returned', async () => {
     const res = await request(app)
-      .get('/book/1/borrow?')
+      .get('/api/book/1/borrow?')
       .set('content-type', 'multipart/form-data')
       .set('authorization', auth.token);
-    const { notReturned } = res.body;
     expect(res.status).toEqual(200);
     expect(res.body).toHaveProperty('notReturned');
-    expect(res.body).toEqual({ notReturned });
   });
 });

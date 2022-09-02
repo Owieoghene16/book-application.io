@@ -15,7 +15,7 @@ export const validateEmailAndPassword = (req, res, next) => {
     return res.status(400).json({ message: 'Length of password must be 8 or above' });
   }
   if (password !== reEnterPassword) {
-    return res.status(400).json({ message: 'reEnter Password' });
+    return res.status(400).json({ message: 'Password doesnt match' });
   }
   return next();
 };
@@ -27,7 +27,7 @@ export const loginEmailAndPassword = (req, res, next) => {
   } = req.body;
   if (!email || !password) {
     return res.status(401).json({
-      message: 'Fill the form throughly',
+      message: 'Fill the form thoroughly',
     });
   }
   return next();
