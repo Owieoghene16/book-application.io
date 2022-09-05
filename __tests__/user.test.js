@@ -17,7 +17,7 @@ beforeAll(async () => {
 describe('users Endpoint', () => {
   test('should fail if a user doesnt fill the form throughly', async () => {
     const res = await request(app)
-      .post('/signup')
+      .post('/api/signup')
       .set('Accept', 'application/json')
       .send({
         userName: 'John',
@@ -31,7 +31,7 @@ describe('users Endpoint', () => {
 
   test('should fail if the password length is not 8 or above', async () => {
     const res = await request(app)
-      .post('/signup')
+      .post('/api/signup')
       .set('Accept', 'application/json')
       .send({
         userName: 'John',
@@ -45,7 +45,7 @@ describe('users Endpoint', () => {
 
   test('should fail if the first password doesnt match the second password', async () => {
     const res = await request(app)
-      .post('/signup')
+      .post('/api/signup')
       .set('Accept', 'application/json')
       .send({
         userName: 'John',
@@ -54,12 +54,12 @@ describe('users Endpoint', () => {
         reEnterPassword: '1234',
       });
     expect(res.status).toEqual(400);
-    expect(res.body).toEqual({ message: 'reEnter Password' });
+    expect(res.body).toEqual({ message: 'Password doesnt match' });
   });
 
   test('create a user', async () => {
     const res = await request(app)
-      .post('/signup')
+      .post('/api/signup')
       .set('Accept', 'application/json')
       .send({
         userName: 'John',
@@ -73,13 +73,14 @@ describe('users Endpoint', () => {
     expect(res.body).toHaveProperty('token');
     expect(res.body).toEqual({
       message: 'User created successfully',
+      username: 'John',
       token,
     });
   });
 
   test('should fail if user email has already been registered', async () => {
     const res = await request(app)
-      .post('/signup')
+      .post('/api/signup')
       .set('Accept', 'application/json')
       .send({
         userName: 'John',
@@ -95,7 +96,7 @@ describe('users Endpoint', () => {
 describe('user login endpoint', () => {
   test('should fail if form isnt fill throughly', async () => {
     const res = await request(app)
-      .post('/signin')
+      .post('/api/signin')
       .set('Accept', 'application/json')
       .send({
         email: 'example1@gmail.com',
@@ -103,13 +104,13 @@ describe('user login endpoint', () => {
       });
     expect(res.status).toEqual(401);
     expect(res.body).toEqual({
-      message: 'Fill the form throughly',
+      message: 'Fill the form thoroughly',
     });
   });
 
   test('valid user can login to their account', async () => {
     const res = await request(app)
-      .post('/signin')
+      .post('/api/signin')
       .set('Accept', 'application/json')
       .send({
         email: 'example1@gmail.com',
@@ -117,17 +118,18 @@ describe('user login endpoint', () => {
       });
     const { token } = res.body;
     auth.token = token;
-    expect(res.body).toHaveProperty('token');
     expect(res.status).toEqual(200);
+    expect(res.body).toHaveProperty('token');
     expect(res.body).toEqual({
       message: 'Login successful',
+      username: 'John',
       token,
     });
   });
 
   test('should fail if email does not exist in the database', async () => {
     const res = await request(app)
-      .post('/signin')
+      .post('/api/signin')
       .set('Accept', 'application/json')
       .send({
         email: 'example2@gmail.com',
@@ -141,7 +143,7 @@ describe('user login endpoint', () => {
 
   test('should fail if password is incorrect', async () => {
     const res = await request(app)
-      .post('/signin')
+      .post('/api/signin')
       .set('Accept', 'application/json')
       .send({
         email: 'example1@gmail.com',

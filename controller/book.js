@@ -23,7 +23,7 @@ export const createBook = async (req, res) => {
 
     const uploadedImage = await cloudinary.uploader.upload(req.files[0].path);
     const uploadedBook = await cloudinary.uploader.upload(req.files[1].path);
-    const book = await userBook.create({
+    await userBook.create({
       title,
       author,
       price,
@@ -36,11 +36,10 @@ export const createBook = async (req, res) => {
       }],
     });
     return res.status(201).json({
-      message: 'Uploaded succesfully',
-      book,
+      message: 'Book Created Succesfully',
     });
   } catch (err) {
-    return res.status(500).json({ message: err });
+    return res.status(500).json({ message: 'Error occured while creating the book' });
   }
 };
 
@@ -54,13 +53,23 @@ export const modifyBook = async (req, res) => {
       description,
     } = req.body;
 
-    const updatedData = await userBook.update({
+    await userBook.update({
       title,
       author,
       price,
       description,
     }, { where: { id } });
-    return res.status(200).json({ updatedData });
+    return res.status(200).json({ message: 'Book updated sucessfully' });
+  } catch (err) {
+    return res.status(500).json({ message: err });
+  }
+};
+
+export const getOneBook = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const singleBook = await userBook.findByPk(id);
+    return res.status(200).json({ singleBook });
   } catch (err) {
     return res.status(500).json({ message: err });
   }

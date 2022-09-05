@@ -18,11 +18,12 @@ export const createUser = async (req, res) => {
 
     const hash = await bcrypt.hash(password, saltRounds);
     const user = await Users.create({ userName, email, password: hash });
-    const token = await jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
+    const token = await jwt.sign({ id: user.id, username: user.userName }, process.env.JWT_SECRET, {
       expiresIn: '24h',
     });
     return res.status(201).json({
       message: 'User created successfully',
+      username: user.userName,
       token,
     });
   } catch (err) {
@@ -37,12 +38,13 @@ export const loginUser = async (req, res) => {
     if (!user) return res.status(400).json({ message: 'User does not exist' });
 
     const checkPassword = await bcrypt.compare(password, user.password);
-    const token = await jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
+    const token = await jwt.sign({ id: user.id, email }, process.env.JWT_SECRET, {
       expiresIn: '24h',
     });
     if (checkPassword) {
       return res.status(200).json({
         message: 'Login successful',
+        username: user.userName,
         token,
       });
     } return res.status(400).json({ message: 'Invalid Password' });
