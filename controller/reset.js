@@ -22,14 +22,14 @@ export const resetLink = async (req, res) => {
     if (!user) return res.status(400).json({ message: 'Email not registered' });
 
     const accessToken = await jwt.sign({ email }, process.env.JWT_SECRET, {
-      expiresIn: '24h',
+      expiresIn: '1h',
     });
     await transporter.sendMail({
       from: ' "Bookstack" <owietutorial@gmail.com>',
       to: email,
       subject: 'Reset Password Requested',
       html: ` <p>Thank you for using the Bookstack.<br></br>
-        Please note that this link is only valid for 24 hours.<br></br></p>
+        Please note that this link is only valid for 60 minutes.<br></br></p>
         <a href="http://localhost:5000/reset-password/${email}/${accessToken}">
           http://localhost:5000/reset-password/${email}/${accessToken}
         </a>
